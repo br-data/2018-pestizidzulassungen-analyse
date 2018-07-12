@@ -1,0 +1,22 @@
+{
+  "name": "pestizidzulassungen-analyse",
+  "description": "Tools for finding cases of plagiarism in the EU approval procedure for pesticides",
+  "author": "Steffen Kühne",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:br-data/pestizidzulassungen-analyse.git"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "colors": "^1.1.2",
+    "node-dir": "^0.1.17",
+    "pdf-text-extract": "^1.5.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint-config-esnext": "^1.6.0"
+  }
+}
