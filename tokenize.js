@@ -22,9 +22,6 @@ let minLength = 80;
 let inputPath = '';
 let outputPath = '';
 
-// Global result storage
-let results = [];
-
 // Statistics
 let tokenCount = 0;
 let timeCount = new Date();
@@ -86,26 +83,21 @@ function prepareCluster(manifest) {
     async.each(manifestChunks[cluster.worker.id - 1], (substance, callback) => {
 
       async.parallel([
-        done => {
+
+        _callback => {
 
           async.each(substance.reports, report => {
-
-            tokenizeFile(report.filename, done);
+            tokenizeFile(report.filename, _callback);
           });
         },
-        done => {
+        _callback => {
 
           async.each(substance.applications, application => {
-
-            tokenizeFile(application.filename, done);
+            tokenizeFile(application.filename, _callback);
           });
         }
       ],
-      (error, results) => {
-
-        callback(error, results);
-      });
-
+      callback);
     }, handleComplete);
   }
 }
@@ -133,7 +125,7 @@ function tokenizeFile(filename, callback) {
   });
 }
 
-// Async callback when loop is done
+// Async callback when loop is _callback
 function handleComplete(error) {
 
   if (error) {
@@ -147,7 +139,7 @@ function handleComplete(error) {
     const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
 
     console.log(`Compared ${tokenCount} tokens in ${timeDiff} minutes`.yellow);
-    console.log(`Worker ${cluster.worker.id} is done`.green);
+    console.log(`Worker ${cluster.worker.id} is _callback`.green);
 
     cluster.worker.kill();
     process.exit(0);
@@ -178,6 +170,7 @@ function chunkArray(arr, key, length) {
   );
 
   const chunks = sortedArr.reduce((acc, obj) => {
+
     const minLength = Math.min.apply(Math, acc.lengths);
     const minIndex = acc.lengths.indexOf(minLength);
 
