@@ -48,7 +48,7 @@ function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
   minSimilarity = _minSimilarity || minSimilarity;
   minLength = _minLength || minLength;
 
-  inputPath = path.resolve(inputFolder, 'manifest-MOD.json');
+  inputPath = path.resolve(inputFolder, 'manifest-test.json');
   outputPath = path.resolve(outputFolder, 'results.json');
 
   // Create result folder
@@ -124,7 +124,7 @@ function processReport(substance, report, callback) {
 
       report.pages = JSON.parse(body);
 
-      async.eachOf(substance.applications, (application, _callback) => {
+      async.each(substance.applications, (application, _callback) => {
 
         processApplication(substance, report, application, _callback);
       }, callback);
@@ -134,7 +134,7 @@ function processReport(substance, report, callback) {
 
 function processApplication(substance, report, application, callback) {
 
-  const filePath = path.resolve(inputFolder, 'json', `${application.filename}.json`);
+  const filePath = path.resolve(inputFolder, 'tokens', `${application.filename}.json`);
 
   fs.readFile(filePath, 'utf8', (error, body) => {
 
@@ -225,7 +225,7 @@ function compareTokens(substance, report, application, callback) {
   }, callback);
 }
 
-// Async callback when loop is _callback
+// Async callback when loop is done
 function handleComplete(error) {
 
   if (error) {
@@ -245,7 +245,7 @@ function handleComplete(error) {
     const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
 
     console.log(`Compared ${tokenCount} tokens in ${timeDiff} minutes`.yellow);
-    console.log(`Worker ${cluster.worker.id} is _callback`.green);
+    console.log(`Worker ${cluster.worker.id} is done`.green);
 
     cluster.worker.kill();
     process.exit(0);
