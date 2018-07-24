@@ -20,10 +20,9 @@ let minSimilarity = 0.8;
 let minLength = 80;
 
 let inputPath = '';
-let outputPath = '';
 
 // Statistics
-let tokenCount = 0;
+let docCount = 0;
 let timeCount = new Date();
 
 // Execute script if not used as a module
@@ -43,7 +42,7 @@ function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
   minSimilarity = _minSimilarity || minSimilarity;
   minLength = _minLength || minLength;
 
-  inputPath = path.resolve(inputFolder, 'manifest-MOD.json');
+  inputPath = path.resolve(inputFolder, 'manifest.json');
 
   // Create result folder
   if (!fs.existsSync(outputFolder)){
@@ -86,15 +85,17 @@ function prepareCluster(manifest) {
 
         _callback => {
 
-          async.each(substance.reports, report => {
-            tokenizeFile(report.filename, _callback);
-          });
+          async.each(substance.reports, (report, __callback) => {
+
+            tokenizeFile(report.filename, __callback);
+          }, _callback);
         },
         _callback => {
 
-          async.each(substance.applications, application => {
-            tokenizeFile(application.filename, _callback);
-          });
+          async.each(substance.applications, (application, __callback) => {
+
+            tokenizeFile(application.filename, __callback);
+          }, _callback);
         }
       ],
       callback);
@@ -104,7 +105,7 @@ function prepareCluster(manifest) {
 
 function tokenizeFile(filename, callback) {
 
-  const applicationJsonPath = path.resolve(inputFolder, 'json', `${filename}.json`);
+  const applicationJsonPath = path.resolve(inputFolder, 'pages', `${filename}.json`);
 
   fs.readFile(applicationJsonPath, 'utf8', (error, body) => {
 
@@ -120,12 +121,14 @@ function tokenizeFile(filename, callback) {
 
       fs.writeFileSync(path.resolve(outputFolder, `${filename}.json`), JSON.stringify(tokens, null, 2), 'utf8');
 
+      docCount++;
+
       callback();
     }
   });
 }
 
-// Async callback when loop is _callback
+// Async callback when loop is done
 function handleComplete(error) {
 
   if (error) {
@@ -138,8 +141,8 @@ function handleComplete(error) {
 
     const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
 
-    console.log(`Compared ${tokenCount} tokens in ${timeDiff} minutes`.yellow);
-    console.log(`Worker ${cluster.worker.id} is _callback`.green);
+    console.log(`Tokenized ${docCount} documents in ${timeDiff} minutes`.yellow);
+    console.log(`Worker ${cluster.worker.id} is done`.green);
 
     cluster.worker.kill();
     process.exit(0);
