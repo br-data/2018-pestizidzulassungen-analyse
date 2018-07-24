@@ -2,13 +2,13 @@
   {
     "substance": "Glyphosat (Carcinogen)",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-    "report": [
+    "reports": [
       {
         "title": "Glyphosat-Carcinogen-Published_B.pdf",
         "filename": "Glyphosat-Carcinogen-Published_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Glyphosate Task Force",
         "filename": "Glyphosat-Carcinogen-Published_A.pdf"
@@ -18,13 +18,13 @@
   {
     "substance": "Glyphosat (Genotox)",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-    "report": [
+    "reports": [
       {
         "title": "Glyphosat-Genotox-Published_B.pdf",
         "filename": "Glyphosat-Genotox-Published_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Glyphosate Task Force",
         "filename": "Glyphosat-Genotox-Published_A.pdf"
@@ -34,13 +34,13 @@
   {
     "substance": "Glyphosat (Reprotox)",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-    "report": [
+    "reports": [
       {
         "title": "Glyphosat-Reprotox-Published_B.pdf",
         "filename": "Glyphosat-Reprotox-Published_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Glyphosate Task Force",
         "filename": "Glyphosat-Reprotox-Published_A.pdf"
@@ -50,13 +50,13 @@
   {
     "substance": "Flumioxazin",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3736",
-    "report": [
+    "reports": [
       {
         "title": "Flumioxazin_B.pdf",
         "filename": "Flumioxazin_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Sumitomo Chemical Agro Europe",
         "filename": "Flumioxazin_A.pdf"
@@ -66,13 +66,13 @@
   {
     "substance": "Diquat",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4308",
-    "report": [
+    "reports": [
       {
         "title": "Diquat_B.pdf",
         "filename": "Diquat_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Syngenta",
         "filename": "Diquat_A.pdf"
@@ -82,13 +82,13 @@
   {
     "substance": "2,4-D",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3812",
-    "report": [
+    "reports": [
       {
         "title": "24D_B.pdf",
         "filename": "24D_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "2,4-D Task Force",
         "filename": "24D_A.pdf"
@@ -98,13 +98,13 @@
   {
     "substance": "Bentazone",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4077",
-    "report": [
+    "reports": [
       {
         "title": "Bentazone_B.pdf",
         "filename": "Bentazone_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Agrichem, BASF",
         "filename": "Bentazone_A.pdf"
@@ -114,13 +114,13 @@
   {
     "substance": "Prosulfuron",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3815",
-    "report": [
+    "reports": [
       {
         "title": "Prosulfuron-B.pdf",
         "filename": "Prosulfuron-B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Syngenta",
         "filename": "Prosulfuron-A.pdf"
@@ -130,13 +130,13 @@
   {
     "substance": "Metalaxyl-M",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
-    "report": [
+    "reports": [
       {
         "title": "Metalaxyl-M",
         "filename": "Metalaxyl-M_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Syngenta",
         "filename": "Metalaxyl-M_A.pdf"
@@ -146,13 +146,13 @@
   {
     "substance": "Sulfosulfuron",
     "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
-    "report": [
+    "reports": [
       {
         "title": "Sulfosulfuron",
         "filename": "Sulfosulfuron_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Monsanto",
         "filename": "Sulfosulfuron_A.pdf"
@@ -162,13 +162,13 @@
   {
     "substance": "Lambda-C",
     "overview": "",
-    "report": [
+    "reports": [
       {
         "title": "Lambda-C",
         "filename": "Lambda-C_B.pdf"
       }
     ],
-    "application": [
+    "applications": [
       {
         "title": "Task Force Lambda",
         "filename": "Lambda-C-TFL_A.pdf"
