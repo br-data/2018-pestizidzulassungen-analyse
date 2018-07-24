@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1">
+
+  <title>Pestizid-Plagiate</title>
+
+  <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAYAAAABtRhCAAACRklEQVRIS+2XPUiWURTHf4ZZ1uCUrRENKpWrrUo0RJSTi2AuujRGDRUqhuDQWA1BYG4OodEU4hjSmEh+DI59aBRhH6SR/ONcOV6f533u02tLeOGF973n3vM7z/l4znlr2Js1COhTuGoKTxQfEGgASNLlD10AOkz/NPCimPXnqQTTSgYeBCaAKxHgKdAFbOaAPawUUBbq8jdgzCztAeqBO8DdDGAM80d+AHOADH4AfPFCuWEFOAFcAp6b8DIwabKTEbASLLbtrXnuVRAIuAHUAoeAnybQd1kqWV0VQF39CJwG3gW/zwMtgJ7qmSnvNJfINWdLujQr5PeA6wHYCzwGvgNP7LRieBi4anHNUpKXNMeBceC8u7QANPvMug0MR1pvASMFpZFXFqeAZXdX4VES7qid35HypLqyDM8q/Ex9XunfAmVn1qvtnwKzPL8PpJoY7rt0uwT3qiz+D5eesT5X8LbbFlddhx9sBFEHSVmFwF/AAafpiHWQsCUFq4nQJuBNZJX2Fn3SvAca3aFrwH33O1hcBFVvfQk0RMDPwDkP1EihJhyWnlgNWa7U6neySlCNKRetgeuOGI9M95QHqmGmjIaBmwf9Cigcx4A1OyzPyYPrcc8bBW6kZISdmXGzbLi2Dhy18MgoLU0Bmml2ASXsBoaAeFqL7VC2anAOSoNcYdAEOAX0OZdqbzKvq2u/FVDtyVqth46YB9MRZeNsRtJ8AtpSxwgpCllaCRZsElThabcN/XW4CSyVBabAKqZAGeDrnJiVyDHYAr0JirRP+k8YAAAAAElFTkSuQmCC" rel="icon" type="image/x-icon">
+
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" src="js/scroll.js"></script>
+  <script type="text/javascript" src="js/diff.js"></script>
+  <script type="text/javascript" src="js/view.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/modal.css">
+  <link rel="stylesheet" type="text/css" href="css/view.css">
+</head>
+
+<body>
+
+  <div id="help-button" class="badge">
+    <div>?</div>
+  </div>
+
+  <header id="header">
+
+    <section class="center">
+
+      <h1>Pestizid-Plagiate</h1>
+      <p>Analyse von Plagiatsfällen im EU-Zulassungsverfahren für Pestizide. Analysiert werden die Risikobewertungen der Mitgliedsstaaten auf textliche Übernahmen aus den Anträgen der Agrarunternehmen und Interessensgruppen. Die Unterschiede sind farblich hervorgehoben (<ins>Bericht</ins>, <del>Antrag</del>).</p>
+
+      <form class="settings">
+
+        <fieldset id="selection" class="filter">
+          <legend>Vorgang auswählen:</legend>
+
+          <select name="selection">
+          </select>
+        </fieldset>
+
+        <fieldset id="sorting" class="filter">
+          <legend>Sortieren nach:</legend>
+
+          <input type="radio" id="sequence" name="sorting" value="sequence" checked>
+          <label for="sequence"> Reihenfolge</label>
+
+          <input type="radio" id="similarity" name="sorting" value="similarity">
+          <label for="similarity"> Ähnlichkeit</label>
+        </fieldset>
+
+        <fieldset class="filter">
+          <legend>Genauigkeit festlegen (<span id="threshold-display">80</span>  %):</legend>
+
+          <label>80 %</label>
+          <input type="range" id="threshold" min="0.8" max="1" step="0.05" value="0.8" list="tickmarks">
+          <label>100 %</label>
+
+          <datalist id="tickmarks">
+            <option value="0.8" label="80%">
+            <option value="0.85">
+            <option value="0.9">
+            <option value="0.95">
+            <option value="1" label="100%">
+          </datalist>
+        </fieldset>
+
+        <!-- fieldset class="filter">
+          <legend>Genauigkeit festlegen (<span id="threshold-display">80</span>  %):</legend>
+
+          <span>60 %</span>
+          <input type="range" id="threshold" min="0.6" max="1" step="0.1" value="0.8" list="tickmarks">
+          <span>100 %</span>
+
+          <datalist id="tickmarks">
+            <option value="0.6" label="60%">
+            <option value="0.7">
+            <option value="0.8">
+            <option value="0.9">
+            <option value="1" label="100%">
+          </datalist>
+        </fieldset -->
+      </form>
+    </section>
+  </header>
+
+  <section id="results" class="results center"></section>
+
+  <section id="help" class="modal" style="opacity: 0;">
+
+    <div class="content">
+
+      <div class="close">&times;</div>
+
+      <h2>Hilfe</h2>
+
+      <p>Dargestellt werden Sätze aus dem Risikobewertungsbericht, welche aus dem Antrag des Herstellers übernommen wurden. Hohe Übereinstimmungen können auf ein Plagiat hindeuten. Die Ergebnisse der Plagiatssuche können nach verschiedenen Kriterien gefiltert und sortiert werden.</p>
+
+      <h3>Vorgang auswählen</h3>
+      <p>Direkt zu einem bestimmten Zulassungsverfahren springen.</p>
+
+      <h3>Sortieren nach</h3>
+      <p>Es kann entweder nach Reihenfolge des Vorkommens im Bericht oder nach absteigend nach höchster Ähnlichkeit sortiert werden.</p>
+
+      <h3>Genauigkeit festlegen</h3>
+      <p>Mit dem Filter <code>Genauigkeit festlegen</code> kann man beeinflussen wie ähnlich sich Textstellen sein müssen, damit sie angezeigt werden. Eine Ähnlichkeit von 100 % bedeutet, dass die Textstelle direkt aus dem Antragstext übernommen wurde. Ähnlichkeiten von 60 % können auch zufällig entstehen.
+
+      <h3>Kontakt</h3>
+      Bei Fehlern oder Ungereimtheiten wenden Sie sich bitte an <a href="mailto:steffen.kuehne@br.de">Steffen Kühne</a>, BR Data.
+
+      <h3>Quellcode</h3>
+      <p><a href="https://github.com/br-data/pestizidzulassungen-analyse" target="_blank">Pestizidzulassungen Analyse</a> auf Github</p>
+    </div>
+  </section>
+
+  <section id="scroll-top" class="scroll-top" data-id="header">▲</section>
+
+</body>
