@@ -48,7 +48,7 @@ function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
   minSimilarity = _minSimilarity || minSimilarity;
   minLength = _minLength || minLength;
 
-  inputPath = path.resolve(inputFolder, 'manifest-test.json');
+  inputPath = path.resolve(inputFolder, 'manifest.json');
   outputPath = path.resolve(outputFolder, 'results.json');
 
   // Create result folder

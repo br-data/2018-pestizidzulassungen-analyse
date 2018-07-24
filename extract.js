@@ -11,8 +11,8 @@ const dir = require('node-dir');
 const extract = require('pdf-text-extract');
 
 // Configuration
-let inputFolder = './pdf/';
-let outputFolder = './text/';
+let inputFolder = './input/pdf/';
+let outputFolder = './input/pages/';
 
 // Options for extracting text from PDFs
 const options = {
