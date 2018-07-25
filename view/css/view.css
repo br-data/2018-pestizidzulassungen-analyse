@@ -157,7 +157,7 @@ input:-webkit-autofill {
 .title .download a {
   background: white;
   color: black;
-  border-bottom: 4px solid rgba(166, 227, 252, 1);
+  border-bottom: 4px solid rgba(166, 227, 252, .7);
 }
 
 .application {
@@ -211,7 +211,7 @@ input:-webkit-autofill {
 }
 
 .line-application {
-  box-shadow: inset 0 -3px 0 rgba(252, 234, 166, .5);
+  box-shadow: inset 0 -3px 0 rgba(252, 234, 166, 1);
 }
 
 del {

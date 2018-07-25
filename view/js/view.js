@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../output/results-test.json';
+var resultFile = '../output/results.json';
 var pdfPath = '../input/pdf/';
 var textPath = '../input/text/';
 
@@ -61,7 +61,7 @@ function filter(callback) {
   });
 
   var nestedData = filteredData = d3.nest()
-    .key(function(d) { d.hash = hash(d.reportName).toString(16); return d.reportName; })
+    .key(function(d) { return d.substance; })
     .key(function(d) { return d.applicationName; })
     .sortValues(function(a, b) {
       if (sorting === 'sequence') { return a.reportTokenIndex - b.reportTokenIndex; }
@@ -86,7 +86,7 @@ function render(data) {
 
   var selectContent = selectOptions.enter().append('option')
     .attr('data-id', function (d) {
-      return 'id-' + hash(d.key).toString(16);
+      return 'id-' + dashcase(d.key);
     })
     .text(key);
 
@@ -99,7 +99,7 @@ function render(data) {
   var reportHeader = report.enter().append('div')
       .attr('class', 'report')
       .attr('id', function (d) {
-        return 'id-' + hash(d.key).toString(16);
+        return 'id-' + dashcase(d.key);
       })
     .append('div')
       .attr('class', 'title');
@@ -204,14 +204,9 @@ function key(d) {
   return d.key;
 }
 
-function hash(str) {
+function dashcase(str) {
 
-  var hash = 5381;
-  var len = str.length;
-
-  while (len) {
-    hash = (hash * 33) ^ str.charCodeAt(--len);
-  }
-
-  return hash >>> 0;
+  return str.replace(/\s+/g, '-')
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, '');
 }
