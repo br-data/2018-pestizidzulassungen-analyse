@@ -9,10 +9,10 @@ const cluster = require('cluster');
 // External packages
 const colors = require('colors');
 const async = require('async');
-const dir = require('node-dir');
 const extract = require('pdf-text-extract');
 
 // Configuration
+let manifestPath = './data/manifest.json';
 let inputFolder = './data/1-pdfs/';
 let outputFolder = './data/2-pages/';
 
@@ -27,72 +27,84 @@ let callback = () => { return; };
 // Execute script if not used as a module
 if (!module.parent) {
 
-  init(
-    process.argv[2],
-    process.argv[3],
-    process.argv[4]
-  );
+  init(process.argv[2], process.argv[3], process.argv[4], process.argv[5]);
 }
 
-function init(_inputFolder, _outputFolder, _callback) {
+function init(_manifestPath, _inputFolder, _outputFolder, _callback) {
+
+  let manifest;
 
   // Overwrite default configuration with arguments
   // from module or command line interface
+  manifestPath = _manifestPath || manifestPath;
   inputFolder = _inputFolder || inputFolder;
   outputFolder = _outputFolder || outputFolder;
   callback = _callback || callback;
 
-  // Create output folder if missing
-  if (!fs.existsSync(outputFolder)) {
+  // Create result folder
+  if (!fs.existsSync(outputFolder)){
 
     fs.mkdirSync(outputFolder);
   }
 
-  readFiles(prepareCluster);
+  // Read manifest
+  manifest = require(manifestPath);
+
+  // Filter out entities that don't have a report or any applications
+  manifest = filterArray(manifest, ['applications', 'reports']);
+
+  prepareCluster(manifest);
 }
 
-function readFiles(callback) {
+function prepareCluster(manifest) {
 
-  // Get a list of all files
-  dir.files(inputFolder, (error, fileList) => {
-
-    if (error) { throw error; }
-
-    // Include PDF files only
-    fileList = fileList.filter(file => file.search(/\.pdf$/) > -1);
-
-    callback(fileList);
-  });
-}
-
-function prepareCluster(fileList) {
-
+  // Prepare batches for workers based on number of CPUs or manifest length
   const cpuCoreCount = os.cpus().length;
-  const fileListBatches = chunkArray(fileList, cpuCoreCount);
-  const workerCount = Math.min(cpuCoreCount, fileListBatches.length);
+  const manifestChunks = chunkArray(manifest, 'applications', cpuCoreCount);
+  const workerCount = Math.min(cpuCoreCount, manifestChunks.length);
 
   if (cluster.isMaster) {
 
     console.log(`Starting ${workerCount} workers...`.yellow);
 
+    // Create new worker for each batch
     for (var i = 0; i < workerCount; i++) {
 
       cluster.fork().on('error', handleError);
     }
   } else if (cluster.isWorker) {
 
-    console.log(`Worker ${cluster.worker.id} started with ${fileListBatches[cluster.worker.id - 1].length} tasks`.green);
+    console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
 
-    async.each(fileListBatches[cluster.worker.id - 1], (file, callback) => {
+    async.each(manifestChunks[cluster.worker.id - 1], (substance, callback) => {
 
-      extractText(file, callback);
+      async.parallel([
+
+        _callback => {
+
+          async.each(substance.reports, (report, __callback) => {
+
+            extractText(report.filename, __callback);
+          }, _callback);
+        },
+        _callback => {
+
+          async.each(substance.applications, (application, __callback) => {
+
+            extractText(application.filename, __callback);
+          }, _callback);
+        }
+      ],
+      callback);
     }, handleComplete);
   }
 }
 
-function extractText(filePath, callback) {
+function extractText(fileName, callback) {
 
-  console.log(`Processing file ${filePath}`);
+  const filePath = path.resolve(inputFolder, fileName);
+
+  console.log(`Processing file ${fileName}`);
 
   extract(filePath, options, (error, result) => {
 
@@ -128,20 +140,39 @@ function handleError(error) {
   console.error(`Worker error: ${error}`.red);
 }
 
-function chunkArray(arr, length) {
+// Remove all objects with missing arrays for a certain key
+function filterArray(arr, keys) {
 
-  const chunks = [];
+  return arr.filter(obj =>
+    keys.every(key =>
+      //obj.hasOwnProperty(key)
+      obj[key] && obj[key].length > 0
+    )
+  );
+}
 
-  while (arr.length) {
+// Split array into a specific number of chunks
+function chunkArray(arr, key, length) {
 
-    const chunkSize = Math.ceil(arr.length / length--);
-    const chunk = arr.slice(0, chunkSize);
+  const sortedArr = arr.sort((a, b) =>
+    b[key].length - a[key].length
+  );
 
-    chunks.push(chunk);
-    arr = arr.slice(chunkSize);
-  }
+  const chunks = sortedArr.reduce((acc, obj) => {
 
-  return chunks;
+    const minLength = Math.min.apply(Math, acc.lengths);
+    const minIndex = acc.lengths.indexOf(minLength);
+
+    acc.groups[minIndex] = acc.groups[minIndex].concat([obj]);
+    acc.lengths[minIndex] += obj[key].length;
+
+    return acc;
+  }, {
+    lengths: new Array(length).fill(0),
+    groups: new Array(length).fill([])
+  });
+
+  return chunks.groups.filter(group => group.length);
 }
 
 function saveFile(relativePath, string) {
@@ -150,8 +181,6 @@ function saveFile(relativePath, string) {
   relativePath = path.normalize(relativePath);
 
   try {
-
-    console.log('Saved file', relativePath);
 
     // Save file
     return fs.writeFileSync(relativePath, string, 'utf8');

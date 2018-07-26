@@ -1,7 +1,6 @@
 ### Project ###
-pdf/
-text/
-bench/
+data/
+data-backup/
 
 ### Node ###
 node_modules
