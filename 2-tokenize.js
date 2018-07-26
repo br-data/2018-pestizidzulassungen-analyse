@@ -14,16 +14,15 @@ const async = require('async');
 const tokenize = require('./lib/tokenize');
 
 // Configuration defaults
-let inputFolder = './data/';
+let manifestPath = './data/manifest.json';
+let inputFolder = './data/2-pages';
 let outputFolder = './data/3-tokens/';
-let minSimilarity = 0.8;
-let minLength = 80;
-
-let inputPath = '';
 
 // Statistics
 let docCount = 0;
 let timeCount = new Date();
+
+let callback = () => { return; };
 
 // Execute script if not used as a module
 if (!module.parent) {
@@ -31,18 +30,16 @@ if (!module.parent) {
   init(process.argv[2], process.argv[3], process.argv[4], process.argv[5]);
 }
 
-function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
+function init(_manifestPath, _inputFolder, _outputFolder, _callback) {
 
   let manifest;
 
   // Overwrite default configuration with arguments
   // from module or command line interface
+  manifestPath = _manifestPath || manifestPath;
   inputFolder = _inputFolder || inputFolder;
   outputFolder = _outputFolder || outputFolder;
-  minSimilarity = _minSimilarity || minSimilarity;
-  minLength = _minLength || minLength;
-
-  inputPath = path.resolve(inputFolder, 'manifest.json');
+  callback = _callback || callback;
 
   // Create result folder
   if (!fs.existsSync(outputFolder)){
@@ -51,7 +48,7 @@ function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
   }
 
   // Read manifest
-  manifest = require(inputPath);
+  manifest = require(manifestPath);
 
   // Filter out entities that don't have a report or any applications
   manifest = filterArray(manifest, ['applications', 'reports']);
@@ -105,7 +102,7 @@ function prepareCluster(manifest) {
 
 function tokenizeFile(filename, callback) {
 
-  const applicationJsonPath = path.resolve(inputFolder, '2-pages', `${filename}.json`);
+  const applicationJsonPath = path.resolve(inputFolder, `${filename}.json`);
 
   fs.readFile(applicationJsonPath, 'utf8', (error, body) => {
 

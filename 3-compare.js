@@ -15,13 +15,11 @@ const hash = require('./lib/hash');
 const dice = require('./lib/dice');
 
 // Configuration defaults
-let inputFolder = './data/';
-let outputFolder = './data/';
+let manifestPath = './data/manifest.json';
+let inputFolder = './data/3-tokens';
+let outputFolder = './data/4-results';
 let minSimilarity = 0.8;
 let minLength = 80;
-
-let inputPath = '';
-let outputPath = '';
 
 // Global result storage
 let hashTable = [];
@@ -31,25 +29,27 @@ let results = [];
 let tokenCount = 0;
 let timeCount = new Date();
 
+let callback = () => { return; };
+
 // Execute script if not used as a module
 if (!module.parent) {
 
-  init(process.argv[2], process.argv[3], process.argv[4], process.argv[5]);
+  init(process.argv[2], process.argv[3], process.argv[4],
+    process.argv[5], process.argv[6], process.argv[7]);
 }
 
-function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
+function init(_manifestPath, _inputFolder, _outputFolder, _minSimilarity, _minLength, _callback) {
 
   let manifest;
 
   // Overwrite default configuration with arguments
   // from module or command line interface
+  manifestPath = _manifestPath || manifestPath;
   inputFolder = _inputFolder || inputFolder;
   outputFolder = _outputFolder || outputFolder;
   minSimilarity = _minSimilarity || minSimilarity;
   minLength = _minLength || minLength;
-
-  inputPath = path.resolve(inputFolder, 'manifest.json');
-  outputPath = path.resolve(outputFolder, 'results.json');
+  callback = _callback || callback;
 
   // Create result folder
   if (!fs.existsSync(outputFolder)){
@@ -58,10 +58,10 @@ function init(_inputFolder, _outputFolder, _minSimilarity, _minLength) {
   }
 
   // Create empty JSON file
-  fs.writeFileSync(outputPath, JSON.stringify(results), 'utf8');
+  fs.writeFileSync(path.resolve(outputFolder, 'results.json'), JSON.stringify(results), 'utf8');
 
   // Read manifest
-  manifest = require(inputPath);
+  manifest = require(manifestPath);
 
   // Filter out entities that don't have a report or any applications
   manifest = filterArray(manifest, ['applications', 'reports']);
@@ -235,6 +235,8 @@ function handleComplete(error) {
     cluster.worker.kill();
     process.exit(1);
   } else {
+
+    const outputPath = path.resolve(outputFolder, 'results.json');
 
     // Load previous results and merge with new results
     const currentJson = fs.readFileSync(outputPath, 'utf8');
