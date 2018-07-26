@@ -14,8 +14,8 @@ const async = require('async');
 const tokenize = require('./lib/tokenize');
 
 // Configuration defaults
-let inputFolder = './input/';
-let outputFolder = './input/tokens';
+let inputFolder = './data/';
+let outputFolder = './data/3-tokens/';
 let minSimilarity = 0.8;
 let minLength = 80;
 
@@ -105,7 +105,7 @@ function prepareCluster(manifest) {
 
 function tokenizeFile(filename, callback) {
 
-  const applicationJsonPath = path.resolve(inputFolder, 'pages', `${filename}.json`);
+  const applicationJsonPath = path.resolve(inputFolder, '2-pages', `${filename}.json`);
 
   fs.readFile(applicationJsonPath, 'utf8', (error, body) => {
 

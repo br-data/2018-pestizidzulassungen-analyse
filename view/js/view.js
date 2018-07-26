@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../output/results.json';
-var pdfPath = '../input/pdf/';
-var textPath = '../input/text/';
+var resultFile = '../data/results.json';
+var pdfPath = '../data/pdf/';
+var textPath = '../data/text/';
 
 var cachedData;
 var results;
@@ -124,7 +124,9 @@ function render(data) {
     .text('Text');
 
   reportHeader.append('h2')
-      .text(key);
+    .text(function (d) {
+      return d.key + ' (' + d.values[0].values[0].reportName + ')';
+    });
 
   report.merge(reportHeader);
   report.exit().remove();

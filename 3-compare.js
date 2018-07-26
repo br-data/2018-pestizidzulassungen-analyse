@@ -15,8 +15,8 @@ const hash = require('./lib/hash');
 const dice = require('./lib/dice');
 
 // Configuration defaults
-let inputFolder = './input/';
-let outputFolder = './output/';
+let inputFolder = './data/';
+let outputFolder = './data/';
 let minSimilarity = 0.8;
 let minLength = 80;
 
@@ -109,7 +109,7 @@ function processSubstance(substance, callback) {
 
 function processReport(substance, report, callback) {
 
-  const filePath = path.resolve(inputFolder, 'tokens', report.filename + '.json');
+  const filePath = path.resolve(inputFolder, '3-tokens', report.filename + '.json');
 
   fs.readFile(filePath, 'utf8', (error, body) => {
 
@@ -119,8 +119,6 @@ function processReport(substance, report, callback) {
 
       callback();
     } else {
-
-      console.log('Processing report:', report.title);
 
       report.pages = JSON.parse(body);
 
@@ -134,7 +132,7 @@ function processReport(substance, report, callback) {
 
 function processApplication(substance, report, application, callback) {
 
-  const filePath = path.resolve(inputFolder, 'tokens', `${application.filename}.json`);
+  const filePath = path.resolve(inputFolder, '3-tokens', `${application.filename}.json`);
 
   fs.readFile(filePath, 'utf8', (error, body) => {
 
@@ -144,6 +142,8 @@ function processApplication(substance, report, application, callback) {
 
       callback();
     } else {
+
+      console.log('Processing application: ', application.title);
 
       application.pages = JSON.parse(body);
 

@@ -1,18 +1,20 @@
 // Extract text from PDF files, using OCR if necessary
 
+// Internal packages
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const cluster = require('cluster');
 
+// External packages
 const colors = require('colors');
 const async = require('async');
 const dir = require('node-dir');
 const extract = require('pdf-text-extract');
 
 // Configuration
-let inputFolder = './input/pdf/';
-let outputFolder = './input/pages/';
+let inputFolder = './data/1-pdfs/';
+let outputFolder = './data/2-pages/';
 
 // Options for extracting text from PDFs
 const options = {
