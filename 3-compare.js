@@ -11,8 +11,10 @@ const colors = require('colors');
 const async = require('async');
 
 // Custom functions
-const hash = require('./lib/hash');
-const dice = require('./lib/dice');
+const chunkArray = require('./lib/chunk-array');
+const filterArray = require('./lib/filter-array');
+const hash = require('./lib/djb2-hash');
+const dice = require('./lib/dice-coefficient');
 
 // Configuration defaults
 let manifestPath = './data/manifest.json';
@@ -80,7 +82,6 @@ function prepareCluster(manifest) {
 
     console.log(`Starting ${workerCount} workers...`.yellow);
 
-    // Create new worker for each batch
     for (var i = 0; i < workerCount; i++) {
 
       cluster.fork().on('error', handleError);
@@ -89,12 +90,16 @@ function prepareCluster(manifest) {
 
     console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
 
-    // Send the worker of to work
-    async.each(manifestChunks[cluster.worker.id - 1], (substance, _callback) => {
-
-      processSubstance(substance, _callback);
-    }, handleComplete);
+    processManifest(manifestChunks[cluster.worker.id - 1]);
   }
+}
+
+function processManifest(manifestChunk) {
+
+  async.each(manifestChunk, (substance, _callback) => {
+
+    processSubstance(substance, _callback);
+  }, handleComplete);
 }
 
 function processSubstance(substance, callback) {
@@ -257,41 +262,6 @@ function handleComplete(error) {
 function handleError(error) {
 
   console.error(`Worker error: ${error}`.red);
-}
-
-// Remove all objects with missing arrays for a certain key
-function filterArray(arr, keys) {
-
-  return arr.filter(obj =>
-    keys.every(key =>
-      //obj.hasOwnProperty(key)
-      obj[key] && obj[key].length > 0
-    )
-  );
-}
-
-// Split array into a specific number of chunks
-function chunkArray(arr, key, length) {
-
-  const sortedArr = arr.sort((a, b) =>
-    b[key].length - a[key].length
-  );
-
-  const chunks = sortedArr.reduce((acc, obj) => {
-
-    const minLength = Math.min.apply(Math, acc.lengths);
-    const minIndex = acc.lengths.indexOf(minLength);
-
-    acc.groups[minIndex] = acc.groups[minIndex].concat([obj]);
-    acc.lengths[minIndex] += obj[key].length;
-
-    return acc;
-  }, {
-    lengths: new Array(length).fill(0),
-    groups: new Array(length).fill([])
-  });
-
-  return chunks.groups.filter(group => group.length);
 }
 
 module.exports = { init };
