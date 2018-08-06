@@ -9,6 +9,7 @@ const cluster = require('cluster');
 // External packages
 const colors = require('colors');
 const async = require('async');
+const lockFile = require('lockfile');
 
 // Custom functions
 const chunkArray = require('./lib/chunk-array');
@@ -19,6 +20,14 @@ const hash = require('./lib/djb2-hash');
 let manifestPath = './data/manifest.json';
 let inputFolder = './data/3-tokens/';
 let outputFolder = './data/5-map/';
+
+// Configuration for lockfile
+const lockOptions = {
+  wait: 1000,
+  stale: 1000,
+  retries: 100,
+  retryWait: 100
+};
 
 // Global result storage
 let results = [];
@@ -46,15 +55,6 @@ function init(_manifestPath, _inputFolder, _outputFolder, _callback) {
   outputFolder = _outputFolder || outputFolder;
   callback = _callback || callback;
 
-  // Create result folder
-  if (!fs.existsSync(outputFolder)){
-
-    fs.mkdirSync(outputFolder);
-  }
-
-  // Create empty JSON file
-  fs.writeFileSync(path.resolve(outputFolder, 'map.json'), JSON.stringify(results), 'utf8');
-
   // Read manifest
   manifest = require(manifestPath);
 
@@ -75,6 +75,15 @@ function prepareCluster(manifest) {
 
     console.log(`Starting ${workerCount} workers...`.yellow);
 
+    // Create result folder
+    if (!fs.existsSync(outputFolder)){
+
+      fs.mkdirSync(outputFolder);
+    }
+
+    // Create empty JSON file
+    fs.writeFileSync(path.resolve(outputFolder, 'map.json'), JSON.stringify(results), 'utf8');
+
     // Create new worker for each batch
     for (var i = 0; i < workerCount; i++) {
 
@@ -82,7 +91,7 @@ function prepareCluster(manifest) {
     }
   } else if (cluster.isWorker) {
 
-    console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
+    //console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
 
     processManifest(manifestChunks[cluster.worker.id - 1]);
   }
@@ -98,19 +107,23 @@ function processManifest(manifestChunk) {
 
         async.each(substance.reports, (report, __callback) => {
 
-          let reportMap = {
-            substance: substance.substance,
-            reportHash: hash(report.title).toString(16),
-            reportName: report.title,
-            reportFile: report.filename,
-            pages: []
+          //console.log(substance.substance);
+
+          let substanceMap = {
+            key: substance.substance,
+            level: 'substance',
+            values: [{
+              key: report.title,
+              level: 'report',
+              values: []
+            }]
           };
 
-          results.push(reportMap);
+          results.push(substanceMap);
 
           docCount++;
 
-          processReport(reportMap, report, __callback);
+          processReport(substanceMap.values[0], report, __callback);
         }, _callback);
       }
     ],
@@ -135,12 +148,9 @@ function processReport(reportMap, report, callback) {
 
       async.eachOf(pages, (tokens, index, _callback) => {
 
-        let pageMap = {
-          pageIndex: index,
-          tokens: []
-        };
+        let pageMap = [];
 
-        reportMap.pages.push(pageMap);
+        reportMap.values.push(pageMap);
 
         processPage(reportMap, pageMap, tokens, _callback);
       }, callback);
@@ -152,10 +162,7 @@ function processPage(reportMap, pageMap, tokens, callback) {
 
   async.eachOf(tokens, (token, index, _callback) => {
 
-    pageMap.tokens.push({
-      tokenIndex: index,
-      tokenHash: hash(token).toString(16)
-    });
+    pageMap.push(hash(token).toString(16));
 
     _callback();
   }, callback);
@@ -172,21 +179,34 @@ function handleComplete(error) {
     process.exit(1);
   } else {
 
-    const outputPath = path.resolve(outputFolder, 'map.json');
+    const filePath = path.resolve(outputFolder, 'map.json');
+    const lockPath = path.resolve(outputFolder, 'map.json.lock');
 
-    // Load previous results and merge with new results
-    const currentJson = fs.readFileSync(outputPath, 'utf8');
-    const newJson = JSON.parse(currentJson).concat(results);
+    lockFile.lock(lockPath, lockOptions, (error) => {
 
-    fs.writeFileSync(outputPath, JSON.stringify(newJson), 'utf8');
+      if (error) { console.error(error); }
 
-    const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
+      // Open existing JSON file
+      const oldJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      // Merge object array with new data
+      const newJson = oldJson.concat(results);
 
-    console.log(`Mapped ${docCount} reports in ${timeDiff} minutes`.yellow);
-    console.log(`Worker ${cluster.worker.id} is done`.green);
+      // Save new data to the existing JSON file
+      fs.writeFileSync(filePath, JSON.stringify(newJson), 'utf8');
 
-    cluster.worker.kill();
-    process.exit(0);
+      lockFile.unlock(lockPath, (error) => {
+
+        if (error) { console.error(error); }
+
+        const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
+
+        console.log(`Mapped ${docCount} reports in ${timeDiff} minutes`.yellow);
+        console.log(`Worker ${cluster.worker.id} is done`.green);
+
+        cluster.worker.kill();
+        process.exit(0);
+      });
+    });
   }
 }
 
