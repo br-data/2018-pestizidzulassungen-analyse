@@ -32,10 +32,6 @@ function init() {
 
 function filter(callback) {
 
-  cachedMap.length = 1;
-  cachedResults = [cachedResults[1]];
-  cachedResults[0].values[0].values.length = 50;
-
   var mergedData = cachedMap.map(function (substanceMap) {
     var substanceResults = cachedResults.filter(function (result) {
       return result.key === substanceMap.key;
@@ -56,7 +52,8 @@ function filter(callback) {
 
         var matchResults = {
           value: pageResults.filter(Boolean).length,
-          length: pageResults.length
+          length: pageResults.length,
+          values: pageResults.filter(Boolean)
         };
 
         return matchResults;
@@ -103,15 +100,16 @@ function draw(data) {
   var element = d3.select(this);
 
   var org = element.append('div')
-    .attr('class', 'organization')
-  .append('h3')
-    .text(key);
+    .append('h3')
+      .text(key);
 
   var width = org.node().getBoundingClientRect().width;
 
   var scale = d3.scaleLinear()
     .domain([0, data.values.length])
     .range([0, width]);
+
+  var rectWidth = (width / data.values.length) + 1;
 
   var axis = d3.axisBottom(scale)
     .tickSize(0)
@@ -142,14 +140,19 @@ function draw(data) {
     .data(values)
     .enter()
   .append('rect')
-    .attr('width', 1)
+    .attr('width', rectWidth)
     .attr('height', 50)
-    .attr('x', function (d) {
-      return scale(d.tokenIndex);
+    .attr('x', function (d, i) {
+      return scale(i);
     })
     .attr('y', '0')
     .attr('fill', function (d) {
-      return d.found ? '#a22c2e' : '#f0f0f4';
+      if (d.value) { return '#a22c2e'; }
+      if (d.length) { return '#f0f0f4'; }
+      return '#fff';
+    })
+    .on('mouseenter', function (d) {
+      console.log(d);
     });
 }
 
