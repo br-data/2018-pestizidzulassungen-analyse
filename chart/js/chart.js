@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', init, false);
 var resultFile = '../data/4-results/results-75-50.json';
 var mapFile = '../data/5-map/map.json';
 
-var cachedData, cachedMap, cachedMerge;
+var cachedResults, cachedMap, cachedMerge;
 var results;
 var timeout;
 
@@ -12,12 +12,16 @@ function init() {
 
   results = d3.select('#results');
 
-  d3.json(resultFile, function (data) {
+  d3.json(resultFile, function (results) {
 
     d3.json(mapFile, function (map) {
 
+      cachedResults = d3.nest()
+        .key(function(d) { return d.substance; })
+        .key(function(d) { return d.reportName; })
+        .entries(results);
+
       cachedMap = map;
-      cachedData = data;
 
       filter(render);
     });
@@ -28,51 +32,49 @@ function init() {
 
 function filter(callback) {
 
-  var nestedData = d3.nest()
-    .key(function(d) { return d.reportName; })
-    .key(function(d) { return d.applicationName; })
-    .sortValues(function(a, b) {
-      return d3.ascending(a.lawIndex, b.lawIndex);
-    })
-    .entries(cachedData);
+  cachedMap.length = 1;
+  cachedResults = [cachedResults[1]];
+  cachedResults[0].values[0].values.length = 50;
 
-  var mergedData = clone(nestedData).map(function (law) {
-
-    var currentMap = cachedMap.filter(function (map) {
-
-      return map.reportHash === hash(law.key).toString(16);
+  var mergedData = cachedMap.map(function (substanceMap) {
+    var substanceResults = cachedResults.filter(function (result) {
+      return result.key === substanceMap.key;
     })[0];
 
+    var reportData = substanceMap.values.map(function (reportMap) {
+      var reportResults = substanceResults.values.filter(function (result) {
+        return result.key === reportMap.key;
+      })[0];
 
-    // Because Frankreich
-    if (currentMap) {
+      var pageData = reportMap.values.map(function (pageMap) {
 
-      law.values.map(function (stat) {
-        stat.values = clone(currentMap.pages).map(function (mapValue) {
-          mapValue.found = stat.values.filter(function (statValue) {
-            return mapValue.tokenHash == statValue.lawHash;
-          }).length > 0 ? true : false;
-          return mapValue;
+        var pageResults = pageMap.map(function (tokenMap) {
+          return reportResults.values.filter(function (result) {
+            return tokenMap == result.reportHash;
+          })[0];
         });
-        return stat;
+
+        var matchResults = {
+          value: pageResults.filter(Boolean).length,
+          length: pageResults.length
+        };
+
+        return matchResults;
       });
-      return law;
-    } else {
 
-      console.error('Could not map', law.key);
-    }
+      return {
+        key: reportMap.key,
+        values: pageData
+      };
+    });
+
+    return {
+      key: substanceMap.key,
+      values: reportData
+    };
   });
 
-  // Because Frankreich
-  mergedData = mergedData.filter(function (obj) {
-    return obj !== undefined;
-  });
-
-  cachedMerge = mergedData;
-
-  console.log(cachedMerge);
-
-  callback(mergedData);
+  callback(mergedData) ;
 }
 
 function render(data) {
