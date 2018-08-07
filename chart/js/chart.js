@@ -99,24 +99,28 @@ function draw(data) {
 
   var element = d3.select(this);
 
-  var org = element.append('div')
+  var report = element.append('div')
     .append('h3')
       .text(key);
 
-  var width = org.node().getBoundingClientRect().width;
+  var width = report.node().getBoundingClientRect().width;
 
-  var scale = d3.scaleLinear()
+  var xScale = d3.scaleLinear()
     .domain([0, data.values.length])
     .range([0, width]);
 
+  var colorScale = d3.scaleLinear()
+    .domain([0, 100])
+    .range(['#f0f0f4', '#a22c2e']);
+
   var rectWidth = (width / data.values.length) + 1;
 
-  var axis = d3.axisBottom(scale)
+  var xAxis = d3.axisBottom(xScale)
     .tickSize(0)
     .tickPadding(5)
-    .tickValues(scale.ticks(5).filter(function (d) {
-      return d / scale.domain()[1] < 0.95;
-    }).concat(scale.domain()[1]))
+    .tickValues(xScale.ticks(5).filter(function (d) {
+      return d / xScale.domain()[1] < 0.95;
+    }).concat(xScale.domain()[1]))
     .tickFormat(function (d) {
       return pretty(d);
     });
@@ -126,9 +130,9 @@ function draw(data) {
   .attr('height', 75);
 
   svg.append('g')
-    .attr('class', 'axis')
+    .attr('class', 'xAxis')
     .attr('transform', 'translate(0,50)')
-    .call(axis);
+    .call(xAxis);
 
   svg.append('rect')
     .attr('width', width)
@@ -143,12 +147,13 @@ function draw(data) {
     .attr('width', rectWidth)
     .attr('height', 50)
     .attr('x', function (d, i) {
-      return scale(i);
+      return xScale(i);
     })
     .attr('y', '0')
     .attr('fill', function (d) {
-      if (d.value) { return '#a22c2e'; }
-      if (d.length) { return '#f0f0f4'; }
+      if (d.length) {
+        return colorScale(d.value / d.length * 100);
+      }
       return '#fff';
     })
     .on('mouseenter', function (d) {
