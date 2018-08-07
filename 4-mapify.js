@@ -91,7 +91,7 @@ function prepareCluster(manifest) {
     }
   } else if (cluster.isWorker) {
 
-    //console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
+    console.log(`Worker ${cluster.worker.id} started with ${manifestChunks[cluster.worker.id - 1].length} tasks`.green);
 
     processManifest(manifestChunks[cluster.worker.id - 1]);
   }
@@ -101,34 +101,32 @@ function processManifest(manifestChunk) {
 
   async.each(manifestChunk, (substance, callback) => {
 
-    async.parallel([
-
-      _callback => {
-
-        async.each(substance.reports, (report, __callback) => {
-
-          //console.log(substance.substance);
-
-          let substanceMap = {
-            key: substance.substance,
-            level: 'substance',
-            values: [{
-              key: report.title,
-              level: 'report',
-              values: []
-            }]
-          };
-
-          results.push(substanceMap);
-
-          docCount++;
-
-          processReport(substanceMap.values[0], report, __callback);
-        }, _callback);
-      }
-    ],
-    callback);
+    processSubstance(substance, callback);
   }, handleComplete);
+}
+
+function processSubstance(substance, callback) {
+
+  async.each(substance.reports, (report, _callback) => {
+
+    console.log(`Processing report for ${substance.substance}`);
+
+    let substanceMap = {
+      key: substance.substance,
+      level: 'substance',
+      values: [{
+        key: report.title,
+        level: 'report',
+        values: []
+      }]
+    };
+
+    results.push(substanceMap);
+
+    docCount++;
+
+    processReport(substanceMap.values[0], report, _callback);
+  }, callback);
 }
 
 function processReport(reportMap, report, callback) {
@@ -182,6 +180,7 @@ function handleComplete(error) {
     const filePath = path.resolve(outputFolder, 'map.json');
     const lockPath = path.resolve(outputFolder, 'map.json.lock');
 
+    // Lock file
     lockFile.lock(lockPath, lockOptions, (error) => {
 
       if (error) { console.error(error); }
@@ -194,6 +193,7 @@ function handleComplete(error) {
       // Save new data to the existing JSON file
       fs.writeFileSync(filePath, JSON.stringify(newJson), 'utf8');
 
+      // Unlock file
       lockFile.unlock(lockPath, (error) => {
 
         if (error) { console.error(error); }
