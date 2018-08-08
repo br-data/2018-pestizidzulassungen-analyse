@@ -161,7 +161,7 @@
   },
   {
     "substance": "Lambda-C",
-    "overview": "",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1509",
     "reports": [
       {
         "title": "Schweden 🇸🇪",
@@ -180,6 +180,254 @@
       {
         "title": "Syngenta",
         "filename": "Lambda-C-Syngenta_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Acibenzolar",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=914",
+    "reports": [
+      {
+        "title": "Frankreich 🇫🇷",
+        "filename": "Acibenzolar_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Syngenta",
+        "filename": "Acibenzolar_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Amitrole",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=951",
+    "reports": [
+      {
+        "title": "Frankreich 🇫🇷",
+        "filename": "Amitrole_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Nufarm",
+        "filename": "Amitrole_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Cyhalofop-butyl",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1181",
+    "reports": [
+      {
+        "title": "Italien 🇮🇹",
+        "filename": "Cyhalofop-butyl_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Dow AgroSciences",
+        "filename": "Cyhalofop-butyl_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Flupyrsulfuron-Methyl",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1395",
+    "reports": [
+      {
+        "title": "Frankreich 🇫🇷",
+        "filename": "Flupyrsulfuron-Methyl_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "DuPont",
+        "filename": "Flupyrsulfuron-Methyl_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Isoproturon",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1495",
+    "reports": [
+      {
+        "title": "Deutschland 🇩🇪",
+        "filename": "Isoproturon_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Isoproturon Task Force",
+        "filename": "Isoproturon_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Metsulfuron-methyl",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1592",
+    "reports": [
+      {
+        "title": "Slowenien 🇸🇮",
+        "filename": "Metsulfuron_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Cheminova",
+        "filename": "Metsulfuron_Cheminova_A.pdf"
+      },
+      {
+        "title": "DuPont",
+        "filename": "Metsulfuron_DuPont_A.pdf"
+      },
+      {
+        "title": "Metsulfuron-methyl Task Force",
+        "filename": "Metsulfuron_TaskForce_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Picolinafen",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1709",
+    "reports": [
+      {
+        "title": "Deutschland 🇩🇪",
+        "filename": "Picolinafen_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "BASF",
+        "filename": "Picolinafen_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Pyraflufen-Ethyl",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1793",
+    "reports": [
+      {
+        "title": "Niederlande 🇳🇱",
+        "filename": "Pyraflufen-Ethyl_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Nihon Nohyaku",
+        "filename": "Pyraflufen-Ethyl_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Pyridate",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1803",
+    "reports": [
+      {
+        "title": "Österreich 🇦🇹",
+        "filename": "Pyridate_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Belchim",
+        "filename": "Pyridate_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Thiabendazole",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1935",
+    "reports": [
+      {
+        "title": "Spanien 🇪🇸",
+        "filename": "Thiabendazole_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Syngenta",
+        "filename": "Thiabendazole_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Triasulfuron",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1968",
+    "reports": [
+      {
+        "title": "Frankreich 🇫🇷",
+        "filename": "Triasulfuron_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Syngenta",
+        "filename": "Triasulfuron_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Famoxadone",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1316",
+    "reports": [
+      {
+        "title": "Vereinigtes Königreich 🇬🇧",
+        "filename": "Famoxadone-B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "DuPont",
+        "filename": "Famoxadone-A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Pymetrozine",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
+    "reports": [
+      {
+        "title": "Deutschland 🇩🇪",
+        "filename": "Pymetrozine_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Syngenta",
+        "filename": "Pymetrozine_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Thifensulfuron-methyl",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
+    "reports": [
+      {
+        "title": "Vereinigtes Königreich 🇬🇧",
+        "filename": "Thifensulfuron-methyl_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Thifensulfuron-methyl Task Force",
+        "filename": "Thifensulfuron-methyl_A.pdf"
+      }
+    ]
+  },
+  {
+    "substance": "Esfenvalerat",
+    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1286",
+    "reports": [
+      {
+        "title": "Vereinigtes Königreich 🇬🇧",
+        "filename": "Esfenvalerat_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Sumitomo Chemical Agro Europe",
+        "filename": "Esfenvalerat_A.pdf"
       }
     ]
   }
