@@ -5,12 +5,27 @@ var resultFile = '../data/4-results/results-75-50.json';
 var mapFile = '../data/5-map/map.json';
 
 var cachedResults, cachedMap, cachedMerge;
+
 var results;
+var width, offsetX;
+
+var tooltip = {
+  el: undefined,
+  styleEl: undefined,
+  width: 200,
+  overlap: 15
+};
+
 var timeout;
 
 function init() {
 
   results = d3.select('#results');
+
+  tooltip.styleEl = d3.select('.tooltip-style');
+
+  tooltip.el = results.append('div')
+    .attr('class', 'tooltip');
 
   d3.json(resultFile, function (results) {
 
@@ -71,6 +86,8 @@ function filter(callback) {
     };
   });
 
+  cachedMerge = mergedData;
+
   callback(mergedData) ;
 }
 
@@ -103,7 +120,8 @@ function draw(data) {
     .append('h3')
       .text(key);
 
-  var width = report.node().getBoundingClientRect().width;
+  width = report.node().getBoundingClientRect().width;
+  offsetX = report.node().getBoundingClientRect().x;
 
   var xScale = d3.scaleLinear()
     .domain([0, data.values.length])
@@ -153,15 +171,58 @@ function draw(data) {
     .attr('fill', function (d) {
       if (d.length) {
         return colorScale(d.value / d.length * 100);
+      } else {
+        return '#fff';
       }
-      return '#fff';
     })
-    .on('mouseenter', function (d) {
-      console.log(d);
-    });
+    .on('mouseenter', handleMouseenter)
+    .on('mouseleave', handleMouseleave);
 }
 
-function update () {
+function handleMouseenter(d, self) {
+
+  var target = this || self;
+
+  var x = parseInt(d3.select(target).attr('x'));
+
+  var tooltipY = target.getBoundingClientRect().y - 80;
+
+  var tooltipScale = d3.scaleLinear()
+    .domain([0, width])
+    .range([offsetX - tooltip.overlap, offsetX + width - tooltip.width + tooltip.overlap]);
+
+  var tooltipArrowScale = d3.scaleLinear()
+    .domain([-tooltip.overlap, width + tooltip.overlap])
+    .range([5, 95]);
+
+  // Add style element for tooltip arrow offset
+  tooltip.styleEl.html(function () {
+    return '.tooltip:before {' +
+      'left: ' + tooltipArrowScale(x) + '%;' +
+    '} ' +
+    '.tooltip:after {' +
+      'left: ' + tooltipArrowScale(x) + '%;' +
+    '}';
+  });
+
+  // Add offset for tooltip container
+  tooltip.el
+    .style('display', 'block')
+    .style('left', tooltipScale(x) + 'px')
+    .style('top', tooltipY + 'px');
+
+  // Update tooltip content
+  tooltip.el.html(function () {
+    return '<p>' + d.value + ' Übernahmen bei ' + d.length + ' Sätzen</p>';
+  });
+}
+
+function handleMouseleave() {
+
+  tooltip.el.style('display', 'none');
+}
+
+function update() {
 
   clearTimeout(timeout);
 
