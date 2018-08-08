@@ -6,25 +6,28 @@ var mapFile = '../data/5-map/map.json';
 
 var cachedResults, cachedMap, cachedMerge;
 
-var results;
-var width, offsetX;
+var container;
 
 var tooltip = {
   el: undefined,
   styleEl: undefined,
+  offsetX: undefined,
+  offsetY: 80,
   width: 200,
-  overlap: 15
+  overlap: 15,
+  scale: undefined,
+  arrowScale: undefined
 };
 
 var timeout;
 
 function init() {
 
-  results = d3.select('#results');
+  container = d3.select('#container');
 
-  tooltip.styleEl = d3.select('.tooltip-style');
+  tooltip.styleEl = d3.select('body').append('style');
 
-  tooltip.el = results.append('div')
+  tooltip.el = container.append('div')
     .attr('class', 'tooltip');
 
   d3.json(resultFile, function (results) {
@@ -93,7 +96,7 @@ function filter(callback) {
 
 function render(data) {
 
-  var law = results.selectAll('.law')
+  var law = container.selectAll('.law')
       .data(data, key)
       .enter()
     .append('div')
@@ -120,8 +123,17 @@ function draw(data) {
     .append('h3')
       .text(key);
 
-  width = report.node().getBoundingClientRect().width;
-  offsetX = report.node().getBoundingClientRect().x;
+  var width = report.node().getBoundingClientRect().width;
+
+  tooltip.offsetX = report.node().getBoundingClientRect().x;
+
+  tooltip.scale = d3.scaleLinear()
+    .domain([0, width])
+    .range([tooltip.offsetX - tooltip.overlap, tooltip.offsetX + width - tooltip.width + tooltip.overlap]);
+
+  tooltip.arrowScale = d3.scaleLinear()
+    .domain([-tooltip.overlap, width + tooltip.overlap])
+    .range([5, 95]);
 
   var xScale = d3.scaleLinear()
     .domain([0, data.values.length])
@@ -185,35 +197,27 @@ function handleMouseenter(d, self) {
 
   var x = parseInt(d3.select(target).attr('x'));
 
-  var tooltipY = target.getBoundingClientRect().y - 80;
-
-  var tooltipScale = d3.scaleLinear()
-    .domain([0, width])
-    .range([offsetX - tooltip.overlap, offsetX + width - tooltip.width + tooltip.overlap]);
-
-  var tooltipArrowScale = d3.scaleLinear()
-    .domain([-tooltip.overlap, width + tooltip.overlap])
-    .range([5, 95]);
+  var tooltipY = target.getBoundingClientRect().y - tooltip.offsetY;
 
   // Add style element for tooltip arrow offset
   tooltip.styleEl.html(function () {
     return '.tooltip:before {' +
-      'left: ' + tooltipArrowScale(x) + '%;' +
+      'left: ' + tooltip.arrowScale(x) + '%;' +
     '} ' +
     '.tooltip:after {' +
-      'left: ' + tooltipArrowScale(x) + '%;' +
+      'left: ' + tooltip.arrowScale(x) + '%;' +
     '}';
   });
 
   // Add offset for tooltip container
   tooltip.el
     .style('display', 'block')
-    .style('left', tooltipScale(x) + 'px')
+    .style('left', tooltip.scale(x) + 'px')
     .style('top', tooltipY + 'px');
 
   // Update tooltip content
   tooltip.el.html(function () {
-    return '<p>' + d.value + ' Übernahmen bei ' + d.length + ' Sätzen</p>';
+    return '<p>' + d.value + ' Übernahmen in ' + d.length + ' Sätzen</p>';
   });
 }
 
@@ -228,9 +232,8 @@ function update() {
 
   timeout = setTimeout(function () {
 
-    results.html('');
+    container.html('');
     render(cachedMerge);
-
   }, 500);
 }
 
@@ -250,21 +253,4 @@ function pretty(number) {
   number = number[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + (number[1] ? ',' + number[1] : '');
 
   return number;
-}
-
-function clone(obj) {
-
-  return JSON.parse(JSON.stringify(obj));
-}
-
-function hash(str) {
-
-  var hash = 5381;
-  var len = str.length;
-
-  while (len) {
-    hash = (hash * 33) ^ str.charCodeAt(--len);
-  }
-
-  return hash >>> 0;
 }

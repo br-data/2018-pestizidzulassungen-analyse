@@ -89,7 +89,7 @@ header h1 {
 .tooltip {
   display: none;
   z-index: 100;
-  position: absolute;
+  position: fixed;
   width: 200px;
   height: 72px;
   background: white;
