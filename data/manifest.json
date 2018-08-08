@@ -1,432 +1,488 @@
 [
   {
     "substance": "Glyphosat (Carcinogen)",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
         "filename": "Glyphosat-Carcinogen-Published_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Glyphosate Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Glyphosat-Carcinogen-Published_A.pdf"
       }
     ]
   },
   {
     "substance": "Glyphosat (Genotox)",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
         "filename": "Glyphosat-Genotox-Published_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Glyphosate Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Glyphosat-Genotox-Published_A.pdf"
       }
     ]
   },
   {
     "substance": "Glyphosat (Reprotox)",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
         "filename": "Glyphosat-Reprotox-Published_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Glyphosate Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Glyphosat-Reprotox-Published_A.pdf"
       }
     ]
   },
   {
     "substance": "Flumioxazin",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3736",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1386",
     "reports": [
       {
         "title": "Tschechien 🇨🇿",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3736",
         "filename": "Flumioxazin_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Sumitomo Chemical Agro Europe",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Flumioxazin_A.pdf"
       }
     ]
   },
   {
     "substance": "Diquat",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4308",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1265",
     "reports": [
       {
         "title": "Vereinigtes Königreich 🇬🇧",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4308",
         "filename": "Diquat_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Diquat_A.pdf"
       }
     ]
   },
   {
     "substance": "2,4-D",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3812",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=874",
     "reports": [
       {
         "title": "Griechenland 🇬🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3812",
         "filename": "24D_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "2,4-D Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "24D_A.pdf"
       }
     ]
   },
   {
     "substance": "Bentazone",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4077",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1014",
     "reports": [
       {
         "title": "Niederlande 🇳🇱",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4077",
         "filename": "Bentazone_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Agrichem, BASF",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Bentazone_A.pdf"
       }
     ]
   },
   {
     "substance": "Prosulfuron",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3815",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1781",
     "reports": [
       {
         "title": "Frankreich 🇫🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3815",
         "filename": "Prosulfuron-B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Prosulfuron-A.pdf"
       }
     ]
   },
   {
     "substance": "Metalaxyl-M",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1555",
     "reports": [
       {
         "title": "Belgien 🇧🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
         "filename": "Metalaxyl-M_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Metalaxyl-M_A.pdf"
       }
     ]
   },
   {
     "substance": "Sulfosulfuron",
-    "overview": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1900",
     "reports": [
       {
         "title": "Schweden 🇸🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3999",
         "filename": "Sulfosulfuron_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Monsanto",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Sulfosulfuron_A.pdf"
       }
     ]
   },
   {
     "substance": "Lambda-C",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1509",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1509",
     "reports": [
       {
         "title": "Schweden 🇸🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3677",
         "filename": "Lambda-C_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Task Force Lambda",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Lambda-C-TFL_A.pdf"
       },
       {
         "title": "Nufarm",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Lambda-C-Nufarm_A.pdf"
       },
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Lambda-C-Syngenta_A.pdf"
       }
     ]
   },
   {
     "substance": "Acibenzolar",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=914",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=914",
     "reports": [
       {
         "title": "Frankreich 🇫🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3961",
         "filename": "Acibenzolar_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Acibenzolar_A.pdf"
       }
     ]
   },
   {
     "substance": "Amitrole",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=951",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=951",
     "reports": [
       {
         "title": "Frankreich 🇫🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3742",
         "filename": "Amitrole_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Nufarm",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Amitrole_A.pdf"
       }
     ]
   },
   {
     "substance": "Cyhalofop-butyl",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1181",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1181",
     "reports": [
       {
         "title": "Italien 🇮🇹",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3943",
         "filename": "Cyhalofop-butyl_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Dow AgroSciences",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Cyhalofop-butyl_A.pdf"
       }
     ]
   },
   {
     "substance": "Flupyrsulfuron-Methyl",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1395",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1395",
     "reports": [
       {
         "title": "Frankreich 🇫🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3881",
         "filename": "Flupyrsulfuron-Methyl_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "DuPont",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Flupyrsulfuron-Methyl_A.pdf"
       }
     ]
   },
   {
     "substance": "Isoproturon",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1495",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1495",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4206",
         "filename": "Isoproturon_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Isoproturon Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Isoproturon_A.pdf"
       }
     ]
   },
   {
     "substance": "Metsulfuron-methyl",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1592",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1592",
     "reports": [
       {
         "title": "Slowenien 🇸🇮",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3936",
         "filename": "Metsulfuron_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Cheminova",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Metsulfuron_Cheminova_A.pdf"
       },
       {
         "title": "DuPont",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Metsulfuron_DuPont_A.pdf"
       },
       {
         "title": "Metsulfuron-methyl Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Metsulfuron_TaskForce_A.pdf"
       }
     ]
   },
   {
     "substance": "Picolinafen",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1709",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1709",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4279",
         "filename": "Picolinafen_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "BASF",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Picolinafen_A.pdf"
       }
     ]
   },
   {
     "substance": "Pyraflufen-Ethyl",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1793",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1793",
     "reports": [
       {
         "title": "Niederlande 🇳🇱",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4001",
         "filename": "Pyraflufen-Ethyl_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Nihon Nohyaku",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Pyraflufen-Ethyl_A.pdf"
       }
     ]
   },
   {
     "substance": "Pyridate",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1803",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1803",
     "reports": [
       {
         "title": "Österreich 🇦🇹",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3801",
         "filename": "Pyridate_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Belchim",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Pyridate_A.pdf"
       }
     ]
   },
   {
     "substance": "Thiabendazole",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1935",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1935",
     "reports": [
       {
         "title": "Spanien 🇪🇸",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3880",
         "filename": "Thiabendazole_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Thiabendazole_A.pdf"
       }
     ]
   },
   {
     "substance": "Triasulfuron",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1968",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1968",
     "reports": [
       {
         "title": "Frankreich 🇫🇷",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3958",
         "filename": "Triasulfuron_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Triasulfuron_A.pdf"
       }
     ]
   },
   {
     "substance": "Famoxadone",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1316",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1316",
     "reports": [
       {
         "title": "Vereinigtes Königreich 🇬🇧",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4194",
         "filename": "Famoxadone-B.pdf"
       }
     ],
     "applications": [
       {
         "title": "DuPont",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Famoxadone-A.pdf"
       }
     ]
   },
   {
     "substance": "Pymetrozine",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
     "reports": [
       {
         "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4678",
         "filename": "Pymetrozine_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Syngenta",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Pymetrozine_A.pdf"
       }
     ]
   },
   {
     "substance": "Thifensulfuron-methyl",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1790",
     "reports": [
       {
         "title": "Vereinigtes Königreich 🇬🇧",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4201",
         "filename": "Thifensulfuron-methyl_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Thifensulfuron-methyl Task Force",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Thifensulfuron-methyl_A.pdf"
       }
     ]
   },
   {
     "substance": "Esfenvalerat",
-    "overview": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1286",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1286",
     "reports": [
       {
         "title": "Vereinigtes Königreich 🇬🇧",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3873",
         "filename": "Esfenvalerat_B.pdf"
       }
     ],
     "applications": [
       {
         "title": "Sumitomo Chemical Agro Europe",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
         "filename": "Esfenvalerat_A.pdf"
       }
     ]
