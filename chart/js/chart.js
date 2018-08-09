@@ -50,44 +50,52 @@ function init() {
 
 function filter(callback) {
 
+  cachedMap.sort(alphabetically);
+  cachedResults.sort(alphabetically);
+
   var mergedData = cachedMap.map(function (substanceMap) {
     var substanceResults = cachedResults.filter(function (result) {
       return result.key === substanceMap.key;
     })[0];
 
-    var reportData = substanceMap.values.map(function (reportMap) {
-      var reportResults = substanceResults.values.filter(function (result) {
-        return result.key === reportMap.key;
-      })[0];
+    if (substanceResults) {
 
-      var pageData = reportMap.values.map(function (pageMap) {
+      var reportData = substanceMap.values.map(function (reportMap) {
+        var reportResults = substanceResults.values.filter(function (result) {
+          return result.key === reportMap.key;
+        })[0];
 
-        var pageResults = pageMap.map(function (tokenMap) {
-          return reportResults.values.filter(function (result) {
-            return tokenMap == result.reportHash;
-          })[0];
+        var pageData = reportMap.values.map(function (pageMap) {
+
+          var pageResults = pageMap.map(function (tokenMap) {
+            return reportResults.values.filter(function (result) {
+              return tokenMap == result.reportHash;
+            })[0];
+          });
+
+          var matchResults = {
+            value: pageResults.filter(Boolean).length,
+            length: pageResults.length,
+            values: pageResults.filter(Boolean)
+          };
+
+          return matchResults;
         });
 
-        var matchResults = {
-          value: pageResults.filter(Boolean).length,
-          length: pageResults.length,
-          values: pageResults.filter(Boolean)
+        return {
+          key: reportMap.key,
+          values: pageData
         };
-
-        return matchResults;
       });
 
       return {
-        key: reportMap.key,
-        values: pageData
+        key: substanceMap.key,
+        values: reportData
       };
-    });
-
-    return {
-      key: substanceMap.key,
-      values: reportData
-    };
+    }
   });
+
+  mergedData = mergedData.filter(Boolean);
 
   cachedMerge = mergedData;
 
@@ -194,19 +202,13 @@ function draw(data) {
 function handleMouseenter(d, self) {
 
   var target = this || self;
-
   var x = parseInt(d3.select(target).attr('x'));
-
   var tooltipY = target.getBoundingClientRect().y - tooltip.offsetY;
 
   // Add style element for tooltip arrow offset
   tooltip.styleEl.html(function () {
-    return '.tooltip:before {' +
-      'left: ' + tooltip.arrowScale(x) + '%;' +
-    '} ' +
-    '.tooltip:after {' +
-      'left: ' + tooltip.arrowScale(x) + '%;' +
-    '}';
+    return '.tooltip:before { left: ' + tooltip.arrowScale(x) + '%; }' +
+    '.tooltip:after { left: ' + tooltip.arrowScale(x) + '%; }';
   });
 
   // Add offset for tooltip container
@@ -253,4 +255,12 @@ function pretty(number) {
   number = number[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.') + (number[1] ? ',' + number[1] : '');
 
   return number;
+}
+
+function alphabetically(a, b) {
+
+  if(a.key < b.key) { return -1; }
+  if(a.key > b.key) { return 1; }
+
+  return 0;
 }
