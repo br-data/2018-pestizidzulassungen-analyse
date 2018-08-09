@@ -1,59 +1,5 @@
 [
   {
-    "substance": "Glyphosat (Carcinogen)",
-    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
-    "reports": [
-      {
-        "title": "Deutschland 🇩🇪",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-        "filename": "Glyphosat-Carcinogen-Published_B.pdf"
-      }
-    ],
-    "applications": [
-      {
-        "title": "Glyphosate Task Force",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
-        "filename": "Glyphosat-Carcinogen-Published_A.pdf"
-      }
-    ]
-  },
-  {
-    "substance": "Glyphosat (Genotox)",
-    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
-    "reports": [
-      {
-        "title": "Deutschland 🇩🇪",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-        "filename": "Glyphosat-Genotox-Published_B.pdf"
-      }
-    ],
-    "applications": [
-      {
-        "title": "Glyphosate Task Force",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
-        "filename": "Glyphosat-Genotox-Published_A.pdf"
-      }
-    ]
-  },
-  {
-    "substance": "Glyphosat (Reprotox)",
-    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=EN&selectedID=1438",
-    "reports": [
-      {
-        "title": "Deutschland 🇩🇪",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-4302",
-        "filename": "Glyphosat-Reprotox-Published_B.pdf"
-      }
-    ],
-    "applications": [
-      {
-        "title": "Glyphosate Task Force",
-        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
-        "filename": "Glyphosat-Reprotox-Published_A.pdf"
-      }
-    ]
-  },
-  {
     "substance": "Flumioxazin",
     "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1386",
     "reports": [
