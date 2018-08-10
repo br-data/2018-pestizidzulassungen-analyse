@@ -23,6 +23,109 @@ svg path {
   display: none;
 }
 
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: .5em 0;
+  min-width: 0;
+}
+
+legend {
+  margin-bottom: .5em;
+  font-weight: bold;
+  padding: 0;
+}
+
+select {
+  font-size: 1em;
+}
+
+input,
+button,
+label {
+  border: 0;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+input:focus,
+button:focus {
+  outline: 0;
+}
+
+input[type="radio"] {
+  vertical-align: .1em;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+::-webkit-input-placeholder {
+  color: #889;
+}
+
+:-moz-placeholder {
+  color: #889;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: #889;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #889;
+}
+
+.filter {
+  width: 32%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.filter select {
+  width: 85%;;
+}
+
+.filter input#threshold {
+  width: 50%;
+  vertical-align: inherit;
+}
+
+.key {
+  display: inline-block;
+  vertical-align: -0.1em;
+  width: .9em;
+  height: .9em;
+}
+
+.q-0 {
+  background-color: #f0f0f4;
+}
+
+.q-25 {
+  background-color: #ddbfc3;
+}
+
+.q-50 {
+  background-color: #c98e91;
+}
+
+.q-75 {
+  background-color: #b65d60;
+}
+
+.q-100 {
+  background-color: #a22c2e;
+}
+
+.q-missing {
+  border: 1px solid black;
+  background-color: white;
+}
+
 .badge {
   position: absolute;
   top: 0;

@@ -26,7 +26,43 @@
     <section class="center">
 
       <h1>Pestizid-Plagiate</h1>
-      <p>Visualisierung aller Übernahmen oder Plagiate in einem Gesetz, einer Richtline oder einem Bericht. Angezeigt werden alle Sätze, deren Ähnlichkeit 80 % überschreitet (<span style="font-weight: bold; color: brown;">rot</span>). Die Sätze sind nach Vorkommen im Text sortiert.</p>
+      <p>Visualisierung aller Übernahmen oder Plagiate in einem Gesetz, einer Richtline oder einem Bericht. Angezeigt werden alle Sätze, deren Ähnlichkeit 75 % überschreitet (<span style="font-weight: bold; color: brown;">rot</span>). Die Sätze sind nach Vorkommen im Text sortiert.</p>
+
+      <form class="settings">
+
+        <fieldset class="filter">
+          <legend>Relative Ähnlichkeit:</legend>
+
+          <label>0% <span class="key q-0"></span><span class="key q-25"></span><span class="key q-50"></span><span class="key q-75"></span><span class="key q-100"></span> 100%</label>
+          <label style="margin-left: .5em;"><span class="key q-missing"></span> fehlt</label>
+        </fieldset>
+
+        <fieldset id="sorting" class="filter">
+          <legend>Sortieren nach:</legend>
+
+          <input type="radio" id="sequence" name="sorting" value="sequence" checked>
+          <label for="sequence"> Pestizid</label>
+
+          <input type="radio" id="similarity" name="sorting" value="similarity">
+          <label for="similarity"> Mitgliedsstaat</label>
+        </fieldset>
+
+        <fieldset class="filter">
+          <legend>Genauigkeit festlegen (<span id="threshold-display">80</span>  %):</legend>
+
+          <label>80 %</label>
+          <input type="range" id="threshold" min="0.8" max="1" step="0.05" value="0.8" list="tickmarks">
+          <label>100 %</label>
+
+          <datalist id="tickmarks">
+            <option value="0.8" label="80%">
+            <option value="0.85">
+            <option value="0.9">
+            <option value="0.95">
+            <option value="1" label="100%">
+          </datalist>
+        </fieldset>
+      </form>
     </section>
   </header>
 
