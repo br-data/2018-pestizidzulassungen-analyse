@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../data/4-results/results-75-50.json';
+var resultFile = '../data/4-results/results-new-75-50.json';
 var mapFile = '../data/5-map/map.json';
 
 var cachedResults, cachedMap, cachedMerge;
@@ -19,6 +19,8 @@ var tooltip = {
   arrowScale: undefined
 };
 
+var userInput = {};
+
 var timeout;
 
 function init() {
@@ -29,6 +31,18 @@ function init() {
 
   tooltip.el = container.append('div')
     .attr('class', 'tooltip');
+
+  userInput.thresholdDisplay = d3.select('#threshold-display');
+
+  userInput.threshold = d3.select('#threshold')
+    .on('change', function () {
+      filter(render);
+    });
+
+  userInput.sorting = d3.selectAll('#sorting > input[type="radio"]')
+    .on('click', function () {
+      filter(render);
+    });
 
   d3.json(resultFile, function (results) {
 
@@ -50,14 +64,18 @@ function init() {
 
 function filter(callback) {
 
-  cachedMap.sort(alphabetically);
-  cachedResults.sort(alphabetically);
+  var threshold = userInput.threshold.property('value') || 0.8;
+  var sorting = d3.select('#sorting > input[type="radio"]:checked').property('value') || 'substance';
+
+  if (sorting === 'substance') { cachedMap.sort(sortBySubstance); }
+  if (sorting === 'country') { cachedMap.sort(sortByCountry); }
 
   var mergedData = cachedMap.map(function (substanceMap) {
     var substanceResults = cachedResults.filter(function (result) {
       return result.key === substanceMap.key;
     })[0];
 
+    // Only merge maps which have results
     if (substanceResults) {
 
       var reportData = substanceMap.values.map(function (reportMap) {
@@ -95,8 +113,8 @@ function filter(callback) {
     }
   });
 
+  // Remove undefined map merges
   mergedData = mergedData.filter(Boolean);
-
   cachedMerge = mergedData;
 
   callback(mergedData) ;
@@ -257,10 +275,18 @@ function pretty(number) {
   return number;
 }
 
-function alphabetically(a, b) {
+function sortBySubstance(a, b) {
 
-  if(a.key < b.key) { return -1; }
-  if(a.key > b.key) { return 1; }
+  if (a.key < b.key) { return -1; }
+  if (a.key > b.key) { return 1; }
+
+  return 0;
+}
+
+function sortByCountry(a, b) {
+
+  if (a.values[0].key < b.values[0].key) { return -1; }
+  if (a.values[0].key > b.values[0].key) { return 1; }
 
   return 0;
 }
