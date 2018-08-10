@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../data/results.json';
+var resultFile = '../data/4-results/results-new-75-50.json';
 var pdfPath = '../data/pdf/';
 var textPath = '../data/text/';
 
