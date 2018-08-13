@@ -432,5 +432,23 @@
         "filename": "Esfenvalerat_A.pdf"
       }
     ]
+  },
+  {
+    "substance": "Eisen-III-phosphat",
+    "url": "http://ec.europa.eu/food/plant/pesticides/eu-pesticides-database/public/?event=activesubstance.detail&language=DE&selectedID=1362",
+    "reports": [
+      {
+        "title": "Deutschland 🇩🇪",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/outputLoader?output=ON-3973",
+        "filename": "Ferric-Phosphate_B.pdf"
+      }
+    ],
+    "applications": [
+      {
+        "title": "Bayer CropScience",
+        "url": "http://registerofquestions.efsa.europa.eu/roqFrontend/wicket/bookmarkable/eu.europa.efsa.raw.gui.pages.substance.SubstanceSearchPage",
+        "filename": "Ferric-Phosphate_A.pdf"
+      }
+    ]
   }
 ]
