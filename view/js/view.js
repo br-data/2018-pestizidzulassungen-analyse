@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../data/4-results/results-new-75-50.json';
-var pdfPath = '../data/pdf/';
-var textPath = '../data/text/';
+var resultFile = '../data/4-results/results.json';
+var pdfPath = '../data/1-pdf/';
+var textPath = '../data/1-text/';
 
 var cachedData;
 var results;
@@ -53,7 +53,7 @@ function init() {
 
 function filter(callback) {
 
-  var threshold = userInput.threshold.property('value') || 0.8;
+  var threshold = userInput.threshold.property('value') || 0.75;
   var sorting = d3.select('#sorting > input[type="radio"]:checked').property('value') || 'sequence';
 
   var filteredData = cachedData.filter(function (d) {
