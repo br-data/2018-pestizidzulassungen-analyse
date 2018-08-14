@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../data/4-results/results.json';
+var resultFile = '../data/4-results/results-clean-fepo4-75-50.json';
+// var resultFile = '../data/4-results/results-glyphosat-75-50.json';
 var mapFile = '../data/5-map/map.json';
+// var mapFile = '../data/5-map/map-glyphosat.json';
 
 var cachedResults, cachedMap, cachedMerge;
 

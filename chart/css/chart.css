@@ -252,6 +252,7 @@ header h1 {
 
   .substance {
     page-break-inside: avoid;
+    padding: 0;
   }
 
   .report {
@@ -260,6 +261,7 @@ header h1 {
 
   .report h3 {
     font-weight: normal;
+    margin-top: 0;
   }
 
   .title {
