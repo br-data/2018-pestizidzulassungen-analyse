@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
-var resultFile = '../data/4-results/results-new-75-50.json';
+var resultFile = '../data/4-results/results.json';
 var mapFile = '../data/5-map/map.json';
 
 var cachedResults, cachedMap, cachedMerge;
@@ -12,7 +12,7 @@ var tooltip = {
   el: undefined,
   styleEl: undefined,
   offsetX: undefined,
-  offsetY: 80,
+  offsetY: 90,
   width: 200,
   overlap: 15,
   scale: undefined,
@@ -29,7 +29,7 @@ function init() {
 
   tooltip.styleEl = d3.select('body').append('style');
 
-  tooltip.el = container.append('div')
+  tooltip.el = d3.select('body').append('div')
     .attr('class', 'tooltip');
 
   userInput.thresholdDisplay = d3.select('#threshold-display');
@@ -64,7 +64,7 @@ function init() {
 
 function filter(callback) {
 
-  var threshold = userInput.threshold.property('value') || 0.8;
+  // var threshold = userInput.threshold.property('value') || 0.8;
   var sorting = d3.select('#sorting > input[type="radio"]:checked').property('value') || 'substance';
 
   if (sorting === 'substance') { cachedMap.sort(sortBySubstance); }
@@ -122,22 +122,24 @@ function filter(callback) {
 
 function render(data) {
 
-  var law = container.selectAll('.law')
+  container.html('');
+
+  var substance = container.selectAll('.substance')
       .data(data, key)
       .enter()
     .append('div')
-      .attr('class', 'law');
+      .attr('class', 'substance');
 
-  law.append('div')
+  substance.append('div')
       .attr('class', 'title')
     .append('h2')
       .text(key);
 
-  law.selectAll('.statement')
+  substance.selectAll('.report')
       .data(values, key)
       .enter()
     .append('div')
-      .attr('class', 'statement')
+      .attr('class', 'report')
       .each(draw);
 }
 
@@ -217,9 +219,9 @@ function draw(data) {
     .on('mouseleave', handleMouseleave);
 }
 
-function handleMouseenter(d, self) {
+function handleMouseenter(d, i) {
 
-  var target = this || self;
+  var target = this;
   var x = parseInt(d3.select(target).attr('x'));
   var tooltipY = target.getBoundingClientRect().y - tooltip.offsetY;
 
@@ -237,7 +239,9 @@ function handleMouseenter(d, self) {
 
   // Update tooltip content
   tooltip.el.html(function () {
-    return '<p>' + d.value + ' Übernahmen in ' + d.length + ' Sätzen</p>';
+    return '<p><strong>Seite ' + i + ':</strong><br> ' +
+      d.value + ' Übernahmen in ' + d.length + ' Sätzen ' +
+      '(' + Math.round(d.value / d.length * 100) + ' %)</p>';
   });
 }
 

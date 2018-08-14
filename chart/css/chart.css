@@ -161,7 +161,7 @@ header h1 {
   padding: 0 2em;
 }
 
-.law {
+.substance {
   margin: 20px 0 40px;
   padding: 0 0 20px;
   background: white;
@@ -180,11 +180,11 @@ header h1 {
   color: white;
 }
 
-.statement {
+.report {
   padding: .5em 1.5em 0;
 }
 
-.statement > h3 {
+.report > h3 {
   font-size: 1em;
   margin-top: 0;
 }
@@ -194,7 +194,7 @@ header h1 {
   z-index: 100;
   position: fixed;
   width: 200px;
-  height: 72px;
+  height: 80px;
   background: white;
   border-radius: 4px;
   border: 1px solid slategrey;
@@ -246,19 +246,19 @@ header h1 {
     border-bottom: 1px solid;
   }
 
-  header, .law {
+  header, .substance {
     box-shadow: none;
   }
 
-  .law {
+  .substance {
     page-break-inside: avoid;
   }
 
-  .statement {
+  .report {
     padding: 0;
   }
 
-  .statement h3 {
+  .report h3 {
     font-weight: normal;
   }
 
