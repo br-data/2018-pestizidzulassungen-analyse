@@ -76,7 +76,7 @@ function prepareCluster(manifest) {
     console.log(`Starting ${workerCount} workers...`.yellow);
 
     // Create result folder
-    if (!fs.existsSync(outputFolder)){
+    if (!fs.existsSync(outputFolder)) {
 
       fs.mkdirSync(outputFolder);
     }
@@ -113,10 +113,8 @@ function processSubstance(substance, callback) {
 
     let substanceMap = {
       key: substance.substance,
-      level: 'substance',
       values: [{
         key: report.title,
-        level: 'report',
         values: []
       }]
     };

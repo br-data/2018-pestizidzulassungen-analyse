@@ -117,7 +117,7 @@ function extractText(fileName, callback) {
 
   extract(filePath, options, (error, result) => {
 
-    // if (error) { callback(error); }
+    if (error) { console.error(error); }
 
     const fileName = filePath.substr(filePath.lastIndexOf('/') + 1);
 
