@@ -20,8 +20,8 @@ const dice = require('./lib/dice-coefficient');
 let manifestPath = './data/manifest.json';
 let inputFolder = './data/3-tokens';
 let outputFolder = './data/4-results';
-let minSimilarity = 0.8;
-let minLength = 80;
+let minSimilarity = 0.75;
+let minLength = 50;
 
 // Global result storage
 let hashTable = [];
@@ -104,7 +104,7 @@ function processManifest(manifestChunk) {
 
 function processSubstance(substance, callback) {
 
-  console.log('Processing substance:', substance.substance);
+  console.log(`Processing substance: ${substance.substance}`);
 
   async.each(substance.reports, (report, _callback) => {
 
@@ -114,7 +114,7 @@ function processSubstance(substance, callback) {
 
 function processReport(substance, report, callback) {
 
-  const filePath = path.resolve(inputFolder, '3-tokens', report.filename + '.json');
+  const filePath = path.resolve(inputFolder, report.filename + '.json');
 
   fs.readFile(filePath, 'utf8', (error, body) => {
 
@@ -137,7 +137,7 @@ function processReport(substance, report, callback) {
 
 function processApplication(substance, report, application, callback) {
 
-  const filePath = path.resolve(inputFolder, '3-tokens', `${application.filename}.json`);
+  const filePath = path.resolve(inputFolder, application.filename + '.json');
 
   fs.readFile(filePath, 'utf8', (error, body) => {
 
@@ -148,7 +148,7 @@ function processApplication(substance, report, application, callback) {
       callback();
     } else {
 
-      console.log('Processing application: ', application.title);
+      console.log(`Processing application: ${application.title}`);
 
       application.pages = JSON.parse(body);
 
@@ -193,7 +193,7 @@ function compareTokens(substance, report, application, callback) {
           const similarity = dice(reportToken, applicationToken);
 
           // ... if the similarity is high enough
-          if (similarity > minSimilarity) {
+          if (similarity >= minSimilarity) {
 
             const reportHash = hash(reportToken).toString(16);
 
@@ -247,7 +247,7 @@ function handleComplete(error) {
     const currentJson = fs.readFileSync(outputPath, 'utf8');
     const newJson = JSON.parse(currentJson).concat(results);
 
-    fs.writeFileSync(outputPath, JSON.stringify(newJson, null, 2), 'utf8');
+    fs.writeFileSync(outputPath, JSON.stringify(newJson), 'utf8');
 
     const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
 

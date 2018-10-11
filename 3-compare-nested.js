@@ -20,8 +20,8 @@ const dice = require('./lib/dice-coefficient');
 let manifestPath = './data/manifest.json';
 let inputFolder = './data/3-tokens';
 let outputFolder = './data/4-results';
-let minSimilarity = 0.8;
-let minLength = 80;
+let minSimilarity = 0.75;
+let minLength = 50;
 
 // Global result storage
 let hashTable = [];
@@ -60,7 +60,7 @@ function init(_manifestPath, _inputFolder, _outputFolder, _minSimilarity, _minLe
   }
 
   // Create empty JSON file
-  fs.writeFileSync(path.resolve(outputFolder, 'results.json'), JSON.stringify(results), 'utf8');
+  fs.writeFileSync(path.resolve(outputFolder, 'results-nested.json'), JSON.stringify(results), 'utf8');
 
   // Read manifest
   manifest = require(manifestPath);
@@ -258,13 +258,13 @@ function handleComplete(error) {
     process.exit(1);
   } else {
 
-    const outputPath = path.resolve(outputFolder, 'results.json');
+    const outputPath = path.resolve(outputFolder, 'results-nested.json');
 
     // Load previous results and merge with new results
     const currentJson = fs.readFileSync(outputPath, 'utf8');
     const newJson = JSON.parse(currentJson).concat(results);
 
-    fs.writeFileSync(outputPath, JSON.stringify(newJson, null, 2), 'utf8');
+    fs.writeFileSync(outputPath, JSON.stringify(newJson), 'utf8');
 
     const timeDiff = Math.round((new Date() - timeCount) / (1000 * 60));
 

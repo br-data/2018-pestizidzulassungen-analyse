@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
 var resultFile = '../data/4-results/results.json';
-var pdfPath = '../data/1-pdf/';
-var textPath = '../data/1-text/';
+var pdfPath = '../data/pdf/';
+var textPath = '../data/text/';
 
 var cachedData;
 var results;
