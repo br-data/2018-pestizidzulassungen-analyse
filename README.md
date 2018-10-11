@@ -72,5 +72,17 @@ Hier ein Beispiel für ein minimales Manifest, in dem ein EU-Gutachten zum Pesti
 ]
 ```
 
-Das vollständige Manifest (mit teilweise nicht benötigten Feldern) findet sich hier: [input/manifest.json](input/manifest.json).
+Das vollständige Manifest findet sich hier: [input/manifest.json](input/manifest.json).
+
+
+## Daten säubern
+
+```regex
+^\s{2}.*?\\n\\n\\n
+```
+
+```regex
+[.]{5,}
+```
+
 
