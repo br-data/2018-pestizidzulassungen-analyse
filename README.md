@@ -74,8 +74,9 @@ Hier ein Beispiel für ein minimales Manifest, in dem ein EU-Gutachten zum Pesti
 
 Das vollständige Manifest findet sich hier: [input/manifest.json](input/manifest.json).
 
+## 1. PDFs extrahieren `1-extract.js`
 
-## Daten säubern
+## 2. Tokenisierung `2-tokenize.js`
 
 ```regex
 ^\s{2}.*?\\n\\n\\n
@@ -85,4 +86,14 @@ Das vollständige Manifest findet sich hier: [input/manifest.json](input/manifes
 [.]{5,}
 ```
 
+## Ähnlichkeitsvergleich `3-compare.js`
 
+## Map erstellen `4-mapify.js`
+
+## Listenansicht `/view`
+
+![Listenansicht](view/view.png)
+
+## Barcode-Plot `/chart`
+
+![Barcode-Plot](chart/chart.png)
