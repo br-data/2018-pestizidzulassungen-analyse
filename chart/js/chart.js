@@ -94,7 +94,11 @@ function filter(callback) {
           var matchResults = {
             value: pageResults.filter(Boolean).length,
             length: pageResults.length,
-            values: pageResults.filter(Boolean)
+            values: pageResults.filter(Boolean).map(function (d) {
+              return {
+                similarity: Math.round(d.similarity * 100) / 100
+              };
+            })
           };
 
           return matchResults;
@@ -121,6 +125,11 @@ function filter(callback) {
 }
 
 function render(data) {
+
+  // var result = data.filter(function (d) {
+  //   return d.key === 'Sulfosulfuron' || d.key === 'Prosulfuron' || d.key === 'Flumioxazin';
+  // });
+  // console.log(result);
 
   container.html('');
 
