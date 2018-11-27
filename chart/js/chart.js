@@ -127,7 +127,12 @@ function filter(callback) {
 function render(data) {
 
   // var result = data.filter(function (d) {
-  //   return d.key === 'Sulfosulfuron' || d.key === 'Prosulfuron' || d.key === 'Flumioxazin';
+  //   return d.key === 'Sulfosulfuron' || d.key === 'Prosulfuron' || d.key === 'Pyridate';
+  // }).map(function (d) {
+  //   return {
+  //     key: d.key,
+  //     values: d.values[0].values
+  //   };
   // });
   // console.log(result);
 
