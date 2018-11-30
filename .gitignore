@@ -1,6 +1,6 @@
 ### Project ###
 data/
-data-backup/
+data-backup*
 
 ### Node ###
 node_modules
