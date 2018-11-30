@@ -20,7 +20,6 @@ const hash = require('./lib/djb2-hash');
 let manifestPath = './data/manifest.json';
 let inputFolder = './data/3-tokens/';
 let outputFolder = './data/5-map/';
-let outputFile = 'map.json';
 
 // Configuration for lockfile
 const lockOptions = {
@@ -83,7 +82,7 @@ function prepareCluster(manifest) {
     }
 
     // Create empty JSON file
-    fs.writeFileSync(path.resolve(outputFolder, outputFile), JSON.stringify(results), 'utf8');
+    fs.writeFileSync(path.resolve(outputFolder, 'map.json'), JSON.stringify(results), 'utf8');
 
     // Create new worker for each batch
     for (var i = 0; i < workerCount; i++) {
@@ -176,7 +175,7 @@ function handleComplete(error) {
     process.exit(1);
   } else {
 
-    const filePath = path.resolve(outputFolder, outputFile);
+    const filePath = path.resolve(outputFolder, 'map.json');
     const lockPath = path.resolve(outputFolder, 'map.json.lock');
 
     // Lock file

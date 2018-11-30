@@ -20,7 +20,6 @@ const dice = require('./lib/dice-coefficient');
 let manifestPath = './data/manifest.json';
 let inputFolder = './data/3-tokens';
 let outputFolder = './data/4-results';
-let outputFile = 'results.json';
 let minSimilarity = 0.75;
 let minLength = 50;
 
@@ -61,7 +60,7 @@ function init(_manifestPath, _inputFolder, _outputFolder, _minSimilarity, _minLe
   }
 
   // Create empty JSON file
-  fs.writeFileSync(path.resolve(outputFolder, outputFile), JSON.stringify(results), 'utf8');
+  fs.writeFileSync(path.resolve(outputFolder, 'results.json'), JSON.stringify(results), 'utf8');
 
   // Read manifest
   manifest = require(manifestPath);
@@ -242,7 +241,7 @@ function handleComplete(error) {
     process.exit(1);
   } else {
 
-    const outputPath = path.resolve(outputFolder, outputFile);
+    const outputPath = path.resolve(outputFolder, 'results.json');
 
     // Load previous results and merge with new results
     const currentJson = fs.readFileSync(outputPath, 'utf8');
