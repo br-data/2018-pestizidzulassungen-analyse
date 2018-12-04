@@ -7,7 +7,10 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:br-data/pestizidzulassungen-analyse.git"
+    "url": "git@github.com:br-data/2018-pestizidzulassungen-analyse.git"
+  },
+  "scripts": {
+    "start": "node node_modules/http-server/bin/http-server ./ -s --cors"
   },
   "dependencies": {
     "async": "^2.5.0",
@@ -18,6 +21,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
-    "eslint-config-esnext": "^1.6.0"
+    "eslint-config-esnext": "^1.6.0",
+    "http-server": "^0.10.0"
   }
 }
