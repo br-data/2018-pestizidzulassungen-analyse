@@ -4,7 +4,7 @@ Sammlung an Skripten, um die Unabhängigkeit des Pestizidzulassungsverfahrens au
 
 Verglichen wurden jeweils die Textabschnitte zum Thema Toxikologie, insgesamt rund 7.500 Seiten. Die Darstellung der Suchergebnisse als Strichcode-Diagramm hilft dabei, kritische Dokumente und Textpassagen zu identifizieren. Als Übernahme werden Sätze gewertet, die zu mindestens 75 Prozent mit einem Satz aus dem Herstellerantrag übereinstimmen und eine bestimmte Mindestlänge haben.
 
-**Besonders kritisch sind Textstellen, in denen die Behörde wortgleich die Risikobewertung der Industrie übernommen haben. Von diesen Übernahmen gibt es einige. Die Ergebnisse der BR-Datenanalyse finden sich hier:
+Besonders kritisch sind Textstellen, in denen die Behörde wortgleich die Risikobewertung der Industrie übernommen haben. Von diesen Übernahmen gibt es einige. Die Ergebnisse der BR-Datenanalyse finden sich hier:
 
 **Artikel:** [Gift im System: Wie Prüfbehörden von der Industrie abschreiben](https://br.de/pestizide)
 
