@@ -62,7 +62,7 @@ Das Manifest wird benötigt, um die Bewertungsberichte den jeweiligen Hersteller
 
 Das vollständige Manifest für alle Wirkstoffe findet sich hier: [data/manifest.json](data/manifest.json). Das zusätzliche Attribute `url` ist optional und dient ausschließlich der besseren Metadatenhaltung.
 
-## `1-extract`
+## PDFs extrahieren: `1-extract`
 
 In diesem Schritt wird der Text der PDF-Dokumente in JSON-Dateien extrahiert. Gegenüber einer einfachen Textdatei kann so die Seitenstruktur der Dokumente erhalten werden. Zum Extrahieren wird die Node.js-Bibliothek [pdf-text-extract](https://github.com/nisaacson/pdf-text-extract) verwendet.
 
@@ -72,7 +72,7 @@ Das Skript kann mit drei optionalen Parametern angepasst werden: `manifestPath`,
 $ node 1-extract ./data/manifest.json ./data/1-pdfs/ ./data/2-pages/
 ```
 
-## `2-tokenize`
+## Seiten in Sätze zerlegen: `2-tokenize`
 
 Der Vergleich der Texte passiert auf Satzebene. Dazu zerlegt der Tokenizer ([SBD](https://github.com/Tessmore/sbd)) die Textseiten in einzelne Sätze. Außerdem wird in diesem Schritt versucht die Kopfzeilen der einzelnen Seiten zu entfernen. Aufgrund der unterschiedlichen Dokumentformatierungen klappt das aber nicht immer und kann ein manuelles Nachbearbeiten erfordern. 
 
@@ -82,7 +82,7 @@ Das Skript kann mit drei optionalen Parametern angepasst werden: `manifestPath`,
 $ node 2-tokenize ./data/manifest.json ./data/2-pages/ ./data/3-tokens/
 ```
 
-## `3-compare`
+## Ähnlichkeitssuche starten: `3-compare`
 
 Das Skript liest die `manifest.json` aus dem Quellverzeichnis und schreibt die Ergebnisse der Ähnlichkeitssuche in einen JSON-Datei `results.json` im Zielverzeichnis. Hier das Ergebnis für eine (kritische) Übernahme aus dem Herstellerantrag für Prosulfuron:
 
@@ -132,7 +132,7 @@ $ node 3-compare ./data/manifest.json ./data/3-tokens ./data/4-results 0.75 50
 
 Für den Vergleich von tausenden Dokumenten wäre vermutlich ein anderer Algorithmus, zum Beispiel Finger Printing oder LSH, besser geeignet. Die englischsprachige Wikipedia hat eine gute [Übersicht der gängigsten Methoden um Plagiate zu finden](https://en.wikipedia.org/wiki/Plagiarism_detection).
 
-## `4-mapify`
+## Map erstellen: `4-mapify`
 
 Erstellt eine Map (Zuordnungstabelle) mit Hash-Werten der Sätze eines Bewertungsberichts. Diese ermöglicht es, gefundene Ähnlichkeiten schnell der entsprechenden Passage im Bewertungsbericht zuzuordnen, eine Funktion die (noch) für den Barcode-Plot benötigt wird.
 
@@ -159,7 +159,7 @@ Das Skript kann mit drei optionalen Parametern angepasst werden: `manifestPath`,
 $ node 4-mapify ./data/manifest.json ./data/3-tokens/ ./data/5-map/
 ```
 
-## `/chart` Barcode-Plot
+## Barcode-Plot: `/chart` 
 
 Die Barcode-Visualisierung zeigt, wo im Gesetzestext Textübernahmen aus Lobby-Stellungnahmen gefunden wurden. Dadurch kann man sich schnell ein Überblick verschaffen, wie umfangreich Texte übernommen wurden.
 
@@ -180,7 +180,7 @@ $ npm start
 
 Die Ergebnisvisualisierung im Browser unter http://127.0.0.1:8080/chart/ aufrufen.
 
-## `/view` Listenansicht
+## Listenansicht: `/view`
 
 Die Ergebnisse der Ähnlichkeitssuche lassen sich auch als [Diff](https://de.wikipedia.org/wiki/Diff) darstellen, welches die Unterschiede zwischen Stellungnahme und Gesetzestext abschnittweise vergleicht. Dazu lädt das Skript dynamisch die Ergebnisse der Ähnlichkeitssuche und generiert daraus eine HTML-Übersicht:
 
