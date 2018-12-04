@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', init, false);
 
 // Configuration
 var resultFile = '../data/4-results/results.json';
-var pdfPath = '../data/pdf/';
-var textPath = '../data/text/';
+var pdfPath = '../data/1-pdfs/';
+var textPath = '../data/2-pages/';
 
 var cachedData;
 var results;
@@ -119,9 +119,9 @@ function render(data) {
     .attr('class', 'text')
     .attr('target', '_blank')
     .attr('href', function (d) {
-      return textPath + d.values[0].values[0].reportFile + '.txt';
+      return textPath + d.values[0].values[0].reportFile + '.json';
     })
-    .text('Text');
+    .text('JSON');
 
   reportHeader.append('h2')
     .text(function (d) {
