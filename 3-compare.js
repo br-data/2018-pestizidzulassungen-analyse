@@ -49,8 +49,8 @@ function init(_manifestPath, _inputFolder, _outputFolder, _minSimilarity, _minLe
   manifestPath = _manifestPath || manifestPath;
   inputFolder = _inputFolder || inputFolder;
   outputFolder = _outputFolder || outputFolder;
-  minSimilarity = _minSimilarity || minSimilarity;
-  minLength = _minLength || minLength;
+  minSimilarity = _minSimilarity ? parseFloat(_minSimilarity) : minSimilarity;
+  minLength = _minLength ? parseInt(_minLength) : minLength;
   callback = _callback || callback;
 
   // Create result folder

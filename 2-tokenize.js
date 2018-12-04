@@ -17,7 +17,7 @@ const tokenize = require('./lib/tokenize-string');
 
 // Configuration defaults
 let manifestPath = './data/manifest.json';
-let inputFolder = './data/2-pages';
+let inputFolder = './data/2-pages/';
 let outputFolder = './data/3-tokens/';
 
 // Statistics
