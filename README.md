@@ -2,11 +2,12 @@
 
 Sammlung an Skripten, um die Unabhängigkeit des Pestizidzulassungsverfahrens auf EU-Ebene zu untersuchen. Analysiert wurden jeweils Herstelleranträge und Bewertungsberichte zu [25 verschiedenen Pestizidwirkstoffen](https://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2010:322:0010:0019:DE:PDF), deren Zulassungen in den vergangenen Jahren verlängert wurden.
 
-Verglichen wurden jeweils die Textabschnitte zum Thema Toxikologie, insgesamt rund 7.500 Seiten. Die Darstellung der Suchergebnisse als Strichcode-Diagramm hilft dabei kritische Dokumente und Textpassagen zu identifizieren. Als Übernahme werden Sätze gewertet, die zu mindestens 75 Prozent mit einem Satz aus dem Herstellerantrag übereinstimmen und eine bestimmte Mindestlänge haben.
+Verglichen wurden jeweils die Textabschnitte zum Thema Toxikologie, insgesamt rund 7.500 Seiten. Die Darstellung der Suchergebnisse als Strichcode-Diagramm hilft dabei kritische Dokumente und Textpassagen zu identifizieren. Als Übernahme werden Sätze gewertet, die zu mindestens 75 Prozent mit einem Satz aus dem Herstellerantrag übereinstimmen und eine bestimmte Mindestlänge haben. Eine Übersicht der untersuchten Berichte mit allen gefunden Übernahmen gibt es hier als [Barcode-Plot](https://br-data.github.io/2018-pestizidzulassungen-analyse/chart/) oder als [Liste der Übernahmen](https://br-data.github.io/2018-pestizidzulassungen-analyse/view/).
 
 Besonders kritisch sind Textstellen, in denen die Behörde wortgleich die Risikobewertung der Industrie übernommen haben. Von diesen Übernahmen gibt es einige. Die Ergebnisse der BR-Datenanalyse finden sich hier:
 
-**Artikel:** [Gift im System: Wie Prüfbehörden von der Industrie abschreiben](https://br.de/pestizide)
+- **Artikel:** [Gift im System: Wie Prüfbehörden von der Industrie abschreiben](https://br.de/pestizide)
+- **Kontakt:** [BR Data](https://www.br.de/extra/br-data/br-data-kontakt-100.html) 
 
 ## Verwendung
 
