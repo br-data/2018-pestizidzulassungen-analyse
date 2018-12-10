@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', init, false);
+window.addEventListener('load', init, false);
 
 // Configuration
 var resultFile = '../data/4-results/results.json';
