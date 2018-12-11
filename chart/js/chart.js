@@ -213,13 +213,18 @@ function draw(data) {
 
   svg.append('g')
     .selectAll('rect')
-    .data(values)
+    .data(function (d) {
+      return d.values
+        .map((d, i) => {
+          d.index = i; return d;})
+        .filter(d => d.value || !d.length);
+    })
     .enter()
   .append('rect')
     .attr('width', rectWidth)
     .attr('height', 50)
-    .attr('x', function (d, i) {
-      return xScale(i);
+    .attr('x', function (d) {
+      return xScale(d.index);
     })
     .attr('y', '0')
     .attr('fill', function (d) {
@@ -252,11 +257,18 @@ function handleMouseenter(d, i) {
     .style('top', tooltipY + 'px');
 
   // Update tooltip content
-  tooltip.el.html(function () {
-    return '<p><strong>Seite ' + i + ':</strong><br> ' +
-      d.value + ' Übernahmen in ' + d.length + ' Sätzen ' +
-      '(' + Math.round(d.value / d.length * 100) + ' %)</p>';
-  });
+  if(d.length) {
+    tooltip.el.html(function () {
+      return '<p><strong>Seite ' + i + ':</strong><br> ' +
+        d.value + ' Übernahmen in ' + d.length + ' Sätzen ' +
+        '(' + Math.round(d.value / d.length * 100) + ' %)</p>';
+    });
+  } else {
+    tooltip.el.html(function () {
+      return '<p><strong>Seite ' + i + ':</strong> ' +
+        'Seite fehlt</p>';
+    });
+  }
 }
 
 function handleMouseleave() {
