@@ -13,7 +13,7 @@
     "start": "node node_modules/http-server/bin/http-server ./ -s --cors"
   },
   "dependencies": {
-    "async": "^2.5.0",
+    "async": "^3.2.2",
     "colors": "^1.1.2",
     "lockfile": "^1.0.4",
     "pdf-text-extract": "^1.5.0",
