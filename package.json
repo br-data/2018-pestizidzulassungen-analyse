@@ -22,6 +22,6 @@
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "eslint-config-esnext": "^1.6.0",
-    "http-server": "^0.10.0"
+    "http-server": "^14.1.1"
   }
 }
